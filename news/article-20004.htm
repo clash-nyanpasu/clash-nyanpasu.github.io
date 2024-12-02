@@ -2,10 +2,9 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://clash-nyanpasu.github.io" />
-    <title>2024-07归档 - Clash Nyanpasu官方节点站</title>
-        <meta name="keywords" content="2024-07归档" />
-        <meta name="description" content="2024-07归档" />
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-20004.htm" />
+    <title>Android 弹窗设计规范</title>
+        <meta name="description" content="Android 弹窗又叫弹框、弹出层等，指代所有从界面中弹出的临时存在的窗口。它是我们在Android APP中常见的交互组件，用作提醒、做决定、处理某个任务。通过查找Android开发者指南中的一些" />
         <link rel="icon" href="__ADDON__/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
@@ -32,7 +31,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
         <div class="em40_header_area_main">
         <div class="tx_top2_relative">
             <div class="all_header_abs">
@@ -120,12 +119,13 @@
             <div class="row">
                 <div class="col-md-12 txtc  text-center ccase">
                     <div class="brpt brptsize">
-                        <h1 class="brcrumb_title">2024-07 归档</h1>
+                        <h1 class="brcrumb_title">Android 弹窗设计规范</h1>
                     </div>
                     <div class="breadcumb-inner">
                         <ul>
                             <li><a href="/">首页</a></li>
-                            <li>-<span class="current">2024-07 归档</span></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
                         </ul>
                     </div>
                 </div>
@@ -138,94 +138,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-31">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-31-free-subscribe-node.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/7f25368974f287b37e866561310bd2bc.webp" alt="7月31日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
+                                      				  				  				<div id="content_views" class="htmledit_views"> <p>Android 弹窗又叫弹框、弹出层等，指代所有从界面中弹出的临时存在的窗口。它是我们在Android APP中常见的交互组件，用作提醒、做决定、处理某个任务。通过查找Android开发者指南中的一些官方规范（https://developer.android.com/guide/topics/ui）,它分为Toasts吐司提示、SnackBars底部提示框、Pickers选择器、Menus菜单、Dialogs对话框等。</p> <p>首先，普及一个有关组件性质的概念，模态（modal）和非模态（nonmodal/modeless）情境。模态是用户必须通过点击相关按钮或其他方式来退出之后才能进行其他操作，也即模态情境会打断用户的操作。反之，非模态是不会阻断用户的操作，用户可以继续之前的交互，不对其进行回应。通常，用户可以点击非模态窗口之外的其他位置来关闭它或等它自动消失。</p> <p>接下来依次讲一下各类弹框组件：</p> <p>1.Toast&nbsp;</p> <p>在业界绝大多数APP中，是非模态的，出现在屏幕底部，纯文字显示的，并且不支持交互的系统弹窗。使用方法如下：</p> <p>//第一个参数是上下文，第二个是需要显示的内容，第三个是显示时间(也可为Toast.LENGTH_SHORT) ，两个默认时长分别为 2s 和 3.5s。</p> <p>Toast.makeText(this,"我是文本显示内容",Toast.LENGTH_LONG);</p> <p>另外，也出现了各种打破规范的 Toasts ，比如模态的、带图标的、可交互的等，我们的应用不涉及这些，所以此处不做阐述，只使用非模态的那种方式，遵循系统默认字体和样式规范：</p> <p><strong>•&nbsp;</strong>一次只显示一个 Toast。</p> <p><strong>•&nbsp;</strong>纯文本的 Toasts 一般不超过 14 个字。</p> <p><strong>•&nbsp;</strong>0~10个字符显示时长用Toast.LENGTH_SHORT，超过10个字用Toast.LENGTH_LONG。</p> <p>【贴图】</p> <p>2.SnackBars&nbsp;</p> <p>Snackbars 是 Android 平台的控件，跟 Toasts 非常相似。两者的区别在于，Snackbars 可以包含一个操作，是可以交互的。并且是支持主动滑动关闭的。</p> <p>虽然现在的 Material Design 里已经找不到 Toasts，Snackbars 也可以取代 Toasts，但在实际运用中，还是 Toasts 用得比较多，Snackbars仅是安卓规范样式，这里不做介绍。</p> <p>【贴图】</p> <p>3.Pickers</p> <p>选择器展示了一组值，用户可以从中进行选择其中一个选项，常用于表单。</p> <p><strong>•&nbsp; </strong>显示在内容视图中，通常是嵌入表单中或出现在屏幕底部。</p> <p><strong>•&nbsp; </strong>内容通常包括一组值。</p> <p><strong>•&nbsp;&nbsp;</strong>当前选中的值在中间，以深色标识。</p> <p><strong>•&nbsp;&nbsp;</strong>选中选项后，再次点击触发控件或界面中其他位置，关闭选择器，选择成功。</p> <p><strong>•&nbsp;&nbsp;</strong>再次点击触发控件时，控件上一般包含「取消」和「确定」按钮，点击「确定」按钮，选择成功，同时关闭选择器。直接点击「取消」按钮或点击遮罩层可关闭选择器。</p> <p>【贴图】</p> <p>4.Menus</p> <p>主要介绍Pop Menus 气泡菜单和<strong>&nbsp;</strong>Bottom Menus 底部菜单</p> <p>（1） Pop Menus 气泡菜单&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p> <p><strong>•&nbsp;</strong>以 “小型气泡浮层” 的形式承载菜单功能。</p> <p><strong>•&nbsp;</strong>通常包含一个箭头，指向浮层出现的位置（有时候也不包含箭头）。</p> <p><strong>•&nbsp;&nbsp;</strong>选中某个菜单项后，自动关闭气泡浮层。</p> <p><strong>•&nbsp;</strong>一般是模态的。可在气泡浮层下显示遮罩层，也可不显示。点击遮罩层或界面中其他区域，可关闭浮层。（比较特别的是，像微信和 QQ，弹出气泡浮层后，界面中其他元素均不可点击，但仍可切换底部 tab。）</p> <p>（2）Bottom Menus 底部菜单</p> <p><strong>•&nbsp;&nbsp;</strong>以 “底部模态面板” 的形式承载菜单功能。从底部向上滑动出现的面板，可承载的菜单项较多。</p> <p><strong>•&nbsp;</strong>一般可以采用官方控件，向下滑动面板、点击「关闭」、「取消」按钮或遮罩层关闭面板。</p> <p><strong>•&nbsp;</strong>Action Sheets 和 Activity Views 可以看作一种特定的底部菜单。</p> <p><strong>•&nbsp;&nbsp;</strong>底部菜单用于筛选内容时：</p> <p><strong>① 单个筛选条件：</strong>选中选项后，自动关闭面板。</p> <p><strong>② 多个筛选条件：</strong>一般包含「重置」和「确定」按钮，选择菜单项后，点击「确定」才关闭面板，点击「重置」可清空所有已选条件。</p> <p>【贴图】</p> <p>5.Dialogs</p> <p>阐述一下，贴fttr的图，然后加上CCB里面的使用方法</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/asdasdasd23451/article/details/127655525?spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-127655525-blog-111194091.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-127655525-blog-111194091.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=15"  title="移动端弹窗设计规范总结（二）_laoyang520的博客-CSDN博客_移动端弹框实现" rel="nofollow">移动端弹窗设计规范总结（二）_laoyang520的博客-CSDN博客_移动端弹框实现</a>，有相关介绍</p> <p>-------------------</p> <p>本文部分内容参考：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/asdasdasd23451/article/details/127634266?spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-9-127634266-blog-111194091.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-9-127634266-blog-111194091.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=16"  title="移动端弹窗设计规范总结（一）_laoyang520的博客-CSDN博客_弹窗设计规范" rel="nofollow">移动端弹窗设计规范总结（一）_laoyang520的博客-CSDN博客_弹窗设计规范</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.uisdc.com/app-popup-ui-system"  title="实用干货！UI设计师需要了解的 APP弹窗体系 - 优设网 - 学设计上优设" rel="nofollow">实用干货！UI设计师需要了解的 APP弹窗体系 - 优设网 - 学设计上优设</a></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-19548.htm">动物医院申请条件有哪些要求和流程呢图片（动物医院申请条件有哪些要求和流程呢图片大全）</a></p>
+                                        <p>下一个：<a href="/news/article-20005.htm">动物接种疫苗多少钱一针啊图片及价格（动物疫苗一般多少钱）</a></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-31-free-subscribe-node.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月31日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了加拿大、日本、香港、欧洲、美国、新加坡、韩国等地区,最高速度可达19.8 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-30">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-30-free-clash-nyanpasu.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/86ac4c550549e47040f3d82f5b82f2ca.webp" alt="7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-30-free-clash-nyanpasu.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了香港、美国、欧洲、日本、加拿大、新加坡、韩国等地区,最高速度可达21.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-29">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-29-node-share-links.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/b852afab44edab0b0cc77ae376ae066b.webp" alt="7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-29-node-share-links.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了新加坡、香港、韩国、加拿大、欧洲、美国、日本等地区,最高速度可达20.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-28">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-28-free-high-speed-nodes.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/b9d1ee8f77b87656bf6da8e8f1a93059.webp" alt="7月28日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-28-free-high-speed-nodes.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月28日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了美国、韩国、香港、加拿大、新加坡、欧洲、日本等地区,最高速度可达22.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                                            </div>
-                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -233,16 +151,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-8-19-free-node-subscribe-links.htm" title="8月19日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月19日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="10月14日 - 最高速度21.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月14日 - 最高速度21.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-12-clash-nyanpasu-node.htm" title="9月12日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月12日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-15-free-high-speed-nodes.htm" title="8月15日 - 最高速度19.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月15日 - 最高速度19.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-18-clash-nyanpasu-node.htm" title="9月18日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月18日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-node-subscribe-links.htm" title="12月2日 - 最高速度21.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月2日 - 最高速度21.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-29-linux-clash-nyanpasu.htm" title="8月29日 - 最高速度19.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月29日 - 最高速度19.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-node-share-links.htm" title="10月23日 - 最高速度19.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月23日 - 最高速度19.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-high-speed-nodes.htm" title="11月25日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月25日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-node-share.htm" title="9月27日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月27日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20004.htm" title="Android 弹窗设计规范">Android 弹窗设计规范</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-node-subscribe.htm" title="11月18日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月18日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-9-7-linux-clash-nyanpasu.htm" title="9月7日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月7日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-node-share.htm" title="10月29日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月29日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-15-linux-clash-nyanpasu.htm" title="9月15日 - 最高速度20.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月15日 - 最高速度20.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-10-clash-nyanpasu.htm" title="9月10日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月10日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-28-free-high-speed-nodes.htm" title="7月28日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">7月28日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-5-free-node-subscribe.htm" title="8月5日 - 最高速度18.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月5日 - 最高速度18.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-subscribe-node.htm" title="11月24日 - 最高速度18.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月24日 - 最高速度18.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
