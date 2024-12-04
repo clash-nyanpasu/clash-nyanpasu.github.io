@@ -2,10 +2,9 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://clash-nyanpasu.github.io" />
-    <title>2024-07归档 - Clash Nyanpasu官方节点站</title>
-        <meta name="keywords" content="2024-07归档" />
-        <meta name="description" content="2024-07归档" />
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-20922.htm" />
+    <title>feign.sentinel.enabled=true 启动报错</title>
+        <meta name="description" content="Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'f" />
         <link rel="icon" href="__ADDON__/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
@@ -32,7 +31,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
         <div class="em40_header_area_main">
         <div class="tx_top2_relative">
             <div class="all_header_abs">
@@ -120,12 +119,13 @@
             <div class="row">
                 <div class="col-md-12 txtc  text-center ccase">
                     <div class="brpt brptsize">
-                        <h1 class="brcrumb_title">2024-07 归档</h1>
+                        <h1 class="brcrumb_title">feign.sentinel.enabled=true 启动报错</h1>
                     </div>
                     <div class="breadcumb-inner">
                         <ul>
                             <li><a href="/">首页</a></li>
-                            <li>-<span class="current">2024-07 归档</span></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
                         </ul>
                     </div>
                 </div>
@@ -138,94 +138,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-31">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-31-free-subscribe-node.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/7f25368974f287b37e866561310bd2bc.webp" alt="7月31日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
+                                      				  				  				<div id="content_views" class="htmledit_views"> <pre><code>Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'feignTargeter' defined in class path resource [org/springframework/cloud/openfeign/FeignAutoConfiguration$HystrixFeignTargeterConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Could not generate CGLIB subclass of class org.springframework.cloud.openfeign.HystrixTargeter: Common causes of this problem include using a final class or a non-visible class; nested exception is org.springframework.cglib.core.CodeGenerationException: java.lang.IllegalAccessError--&gt;class org.springframework.cloud.openfeign.HystrixTargeter$$EnhancerBySpringCGLIB$$f29c8515 cannot access its superclass org.springframework.cloud.openfeign.HystrixTargeter 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516) 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324) 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:227) 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1175) 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:420) 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:426) 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:350) 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:343) 	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1127) 	at org.springframework.cloud.context.named.NamedContextFactory.getInstance(NamedContextFactory.java:148) 	at org.springframework.cloud.openfeign.FeignClientFactoryBean.get(FeignClientFactoryBean.java:281) 	at org.springframework.cloud.openfeign.FeignClientFactoryBean.loadBalance(FeignClientFactoryBean.java:317) 	at org.springframework.cloud.openfeign.FeignClientFactoryBean.getTarget(FeignClientFactoryBean.java:347) 	at org.springframework.cloud.openfeign.FeignClientFactoryBean.getObject(FeignClientFactoryBean.java:327) 	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:169) 	... 36 common frames omitted Caused by: org.springframework.aop.framework.AopConfigException: Could not generate CGLIB subclass of class org.springframework.cloud.openfeign.HystrixTargeter: Common causes of this problem include using a final class or a non-visible class; nested exception is org.springframework.cglib.core.CodeGenerationException: java.lang.IllegalAccessError--&gt;class org.springframework.cloud.openfeign.HystrixTargeter$$EnhancerBySpringCGLIB$$f29c8515 cannot access its superclass org.springframework.cloud.openfeign.HystrixTargeter 	at org.springframework.aop.framework.CglibAopProxy.getProxy(CglibAopProxy.java:208) 	at org.springframework.aop.framework.ProxyFactory.getProxy(ProxyFactory.java:110) 	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.createProxy(AbstractAutoProxyCreator.java:471) 	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:350) 	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:299) 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:430) 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798) 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) 	... 53 common frames omitted Caused by: org.springframework.cglib.core.CodeGenerationException: java.lang.IllegalAccessError--&gt;class org.springframework.cloud.openfeign.HystrixTargeter$$EnhancerBySpringCGLIB$$f29c8515 cannot access its superclass org.springframework.cloud.openfeign.HystrixTargeter 	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:538) 	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:363) 	at org.springframework.cglib.proxy.Enhancer.generate(Enhancer.java:585) 	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:110) 	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData$3.apply(AbstractClassGenerator.java:108) 	at org.springframework.cglib.core.internal.LoadingCache$2.call(LoadingCache.java:54) 	at java.util.concurrent.FutureTask.run(FutureTask.java:266) 	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:61) 	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) 	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:134) 	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:319) 	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:572) 	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:419) 	at org.springframework.aop.framework.ObjenesisCglibAopProxy.createProxyClassAndInstance(ObjenesisCglibAopProxy.java:57) 	at org.springframework.aop.framework.CglibAopProxy.getProxy(CglibAopProxy.java:205) 	... 60 common frames omitted Caused by: java.lang.IllegalAccessError: class org.springframework.cloud.openfeign.HystrixTargeter$$EnhancerBySpringCGLIB$$f29c8515 cannot access its superclass org.springframework.cloud.openfeign.HystrixTargeter 	at java.lang.ClassLoader.defineClass1(Native Method) 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) 	at java.lang.reflect.Method.invoke(Method.java:498) 	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:535) 	... 74 common frames omitted</code></pre> <p>springcloud:&nbsp;Hoxton.SR9</p> <p>alibabacloud:2.2.6.RELEASE</p> <p>openfeign&nbsp;2.2.6.RELEASE</p> <p>主要原因是这个包：</p> <pre><code>          &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;             &lt;scope&gt;runtime&lt;/scope&gt;             &lt;optional&gt;true&lt;/optional&gt;         &lt;/dependency&gt;</code></pre> <p>去掉就启动就没问题了。</p> <p>相关github:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/alibaba/spring-cloud-alibaba/issues/678"  title="&nbsp; &nbsp; https://github.com/alibaba/spring-cloud-alibaba/issues/678" rel="nofollow">&nbsp; &nbsp; https://github.com/alibaba/spring-cloud-alibaba/issues/678</a></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-20921.htm">将时间戳值增加微秒以将其转换为整数，MySQL将返回什么？</a></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-31-free-subscribe-node.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月31日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了加拿大、日本、香港、欧洲、美国、新加坡、韩国等地区,最高速度可达19.8 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-30">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-30-free-clash-nyanpasu.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/86ac4c550549e47040f3d82f5b82f2ca.webp" alt="7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-30-free-clash-nyanpasu.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了香港、美国、欧洲、日本、加拿大、新加坡、韩国等地区,最高速度可达21.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-29">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-29-node-share-links.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/b852afab44edab0b0cc77ae376ae066b.webp" alt="7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-29-node-share-links.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了新加坡、香港、韩国、加拿大、欧洲、美国、日本等地区,最高速度可达20.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-28">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-28-free-high-speed-nodes.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/b9d1ee8f77b87656bf6da8e8f1a93059.webp" alt="7月28日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-28-free-high-speed-nodes.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月28日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了美国、韩国、香港、加拿大、新加坡、欧洲、日本等地区,最高速度可达22.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                                            </div>
-                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -233,16 +150,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-8-6-free-subscribe-node.htm" title="8月6日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月6日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-17-free-node-subscribe-links.htm" title="10月17日 - 最高速度18.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月17日 - 最高速度18.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-29-node-share-links.htm" title="7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-10-linux-clash-nyanpasu.htm" title="8月10日 - 最高速度20.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月10日 - 最高速度20.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-clash-nyanpasu.htm" title="10月8日 - 最高速度20.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月8日 - 最高速度20.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-17-free-high-speed-nodes.htm" title="9月17日 - 最高速度19.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月17日 - 最高速度19.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-9-10-clash-nyanpasu.htm" title="9月10日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月10日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-18-clash-nyanpasu-node.htm" title="9月18日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月18日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-31-free-subscribe-node.htm" title="8月31日 - 最高速度23M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月31日 - 最高速度23M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-28-node-share.htm" title="8月28日 - 最高速度20.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月28日 - 最高速度20.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-clash-nyanpasu.htm" title="11月27日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月27日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-9-7-linux-clash-nyanpasu.htm" title="9月7日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月7日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-30-free-node-subscribe-links.htm" title="8月30日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月30日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-clash-nyanpasu-node.htm" title="10月15日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月15日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-clash-nyanpasu-node.htm" title="11月3日 - 最高速度19.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月3日 - 最高速度19.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-subscribe-node.htm" title="10月28日 - 最高速度22.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月28日 - 最高速度22.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-clash-nyanpasu.htm" title="10月13日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月13日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-clash-nyanpasu-node.htm" title="10月22日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月22日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
