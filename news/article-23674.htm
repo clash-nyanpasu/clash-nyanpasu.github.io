@@ -2,10 +2,9 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://clash-nyanpasu.github.io" />
-    <title>2024-07归档 - Clash Nyanpasu官方节点站</title>
-        <meta name="keywords" content="2024-07归档" />
-        <meta name="description" content="2024-07归档" />
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-23674.htm" />
+    <title>Python中将字典转为成员变量详解</title>
+        <meta name="description" content="当我们在Python中写一个class时，如果有一部分的成员变量需要用一个字典来命名和赋值，此时应该如何操作呢？这个场景最常见于从一个文件（比如json、npz之类的文件）中读取字典变量到内存当中，再" />
         <link rel="icon" href="__ADDON__/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
@@ -32,7 +31,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
         <div class="em40_header_area_main">
         <div class="tx_top2_relative">
             <div class="all_header_abs">
@@ -120,12 +119,13 @@
             <div class="row">
                 <div class="col-md-12 txtc  text-center ccase">
                     <div class="brpt brptsize">
-                        <h1 class="brcrumb_title">2024-07 归档</h1>
+                        <h1 class="brcrumb_title">Python中将字典转为成员变量详解</h1>
                     </div>
                     <div class="breadcumb-inner">
                         <ul>
                             <li><a href="/">首页</a></li>
-                            <li>-<span class="current">2024-07 归档</span></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
                         </ul>
                     </div>
                 </div>
@@ -138,94 +138,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-31">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-31-free-subscribe-node.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/7f25368974f287b37e866561310bd2bc.webp" alt="7月31日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
+                                      				  				  				</h1> <p>当我们在Python中写一个class时，如果有一部分的成员变量需要用一个字典来命名和赋值，此时应该如何操作呢？这个场景最常见于从一个文件（比如json、npz之类的文件）中读取字典变量到内存当中，再赋值给一个类的成员变量，或者已经生成的实例变量。</p> </h1> <p>在python中直接支持了<code>__dict__.update()</code>这样的方法来操作，避免了对locals()、vars()和eval()函数的使用，我们可以直接看这样的一个案例：</p> <pre><code class="language-python">In [1]: dict_a = {'a':1, 'b':2}  In [2]: dict_b = {'c':3}  In [3]: class D(object):    ...:     def __init__(self):    ...:         self.d = 4    ...:         self.__dict__.update(dict_a)    ...:         self.__dict__.update(dict_b)    ...:   In [4]: new_D = D()  In [5]: new_D.__dict__ Out[5]: {'d': 4, 'a': 1, 'b': 2, 'c': 3}  In [6]: new_D.a Out[6]: 1  In [7]: new_D.c Out[7]: 3</code></pre> <p>在这个案例中，我们在类的外部定义了两个字典<code>dict_a</code>和<code>dict_b</code>，字典的key值都是字符串的格式。而我们知道字符串格式在python中如果不使用eval，是不能直接作为变量名来使用的。而通过<code>__dict__.update()</code>的方法将字典导入后，会自动识别其中所有的key和value值，转而赋值给当前类作为成员变量。但是这个方法有一个缺点是，只能通过单层的字典来赋值，如果遇到有层级结构的字典，是不会自动分辨层级结构进行赋值的，比如下方的代码：</p> <pre><code class="language-python">In [15]: dict_a = {'f':{'h':8},'g':7}  In [16]: new_D = D()  In [17]: new_D.__dict__ Out[17]: {'d': 4, 'f': {'h': 8}, 'g': 7, 'c': 3}</code></pre> </h1> <p>根据上一个章节中最后提到的这个特殊场景，我们需要对字典内的元素进行递归，如果遇到嵌套的字典元素，则递归的将该元素添加到下一层级的成员变量中，具体代码如下所示：</p> <pre><code class="language-python">dict_a = {'f':{'h':8},'g':7} dict_b = {'c':3}  class D:     def __init__(self, *args):         for arg in args:             for k, v in arg.items():                 if isinstance(v, dict):                     self.__dict__[k] = D(v)                 else:                     self.__dict__[k] = v  new_D = D(dict_a, dict_b) print (new_D.__dict__) print (new_D.f.h)</code></pre> <p>最终的输出结果如下所示：</p> <pre><code class="language-bash">{'f': &lt;__main__.D object at 0x7fd2f32a4340&gt; , 'g': 7, 'c': 3} 8</code></pre> <p>可以看到，我们最终通过<code>new_D.f.h</code>的方法，成功读取了原有的嵌套字典中的value。虽然这种写法看起来不是很优雅，但是似乎也没有更好的解决方案。并且，通过这个小问题的实践，发现了另外一个略有意思的问题：对python中的字典类型进行更新时，如果key的字符串中带有点号，比如<code>parDict['group1.b'] = 3</code>，只能通过这样的字符串的形式进行更新，如果使用<code>parDict.update(group1.b=4)</code>则会发生报错，这是因为点号在python中不是一个标识符，不能用于命名，原文内容如下：</p> <blockquote> <p>The valid characters for identifiers are the same as in Python 2.x: the uppercase and lowercase letters A through Z, the underscore _ and, except for the first character, the digits 0 through 9.</p> </blockquote> </h1> <p>本文所解决的问题场景是这样的：如果给定一个字典，比如一般从json文件或者npz文件中加载出来的数据都是字典的数据结构，如果我们希望把这个字典赋值给一个类，且使得字典的key和value分别作为类的成员变量名和成员变量值，那么该如何实现呢？对于一个展平的字典而言（没有嵌套字典），我们直接使用update就可以将字典中的所有key和value转变为当前类的成员变量。比较麻烦的是包含有嵌套字典的层级结构字典，此时我们只能使用循环，并且递归的对类的成员变量进行赋值。</p> <ol></ol> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23221.htm">猫最忌讳的三个属相（有些人命里不能养猫）</a></p>
+                                        <p>下一个：<a href="/news/article-23675.htm">宠物粮基地哪里的好用啊（宠物粮基地哪里的好用啊多少钱）</a></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-31-free-subscribe-node.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月31日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了加拿大、日本、香港、欧洲、美国、新加坡、韩国等地区,最高速度可达19.8 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-30">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-30-free-clash-nyanpasu.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/86ac4c550549e47040f3d82f5b82f2ca.webp" alt="7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-30-free-clash-nyanpasu.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了香港、美国、欧洲、日本、加拿大、新加坡、韩国等地区,最高速度可达21.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-29">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-29-node-share-links.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/b852afab44edab0b0cc77ae376ae066b.webp" alt="7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-29-node-share-links.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了新加坡、香港、韩国、加拿大、欧洲、美国、日本等地区,最高速度可达20.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-07-28">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-7-28-free-high-speed-nodes.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/b9d1ee8f77b87656bf6da8e8f1a93059.webp" alt="7月28日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-7-28-free-high-speed-nodes.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">7月28日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了美国、韩国、香港、加拿大、新加坡、欧洲、日本等地区,最高速度可达22.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                                            </div>
-                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -233,16 +151,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-1-clash-nyanpasu.htm" title="11月1日 - 最高速度20.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月1日 - 最高速度20.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-node-share-links.htm" title="10月30日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月30日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-20-clash-nyanpasu-node.htm" title="8月20日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月20日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-clash-nyanpasu-node.htm" title="12月4日 - 最高速度22.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月4日 - 最高速度22.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="10月14日 - 最高速度21.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月14日 - 最高速度21.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-23221.htm" title="猫最忌讳的三个属相（有些人命里不能养猫）">猫最忌讳的三个属相（有些人命里不能养猫）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-2-node-share.htm" title="9月2日 - 最高速度18.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月2日 - 最高速度18.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-22751.htm" title="动物疫苗注射工作注意事项有哪些内容（动物疫苗知识）">动物疫苗注射工作注意事项有哪些内容（动物疫苗知识）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-3-node-share.htm" title="8月3日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月3日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-24-linux-clash-nyanpasu.htm" title="9月24日 - 最高速度19.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月24日 - 最高速度19.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-high-speed-nodes.htm" title="12月3日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月3日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-17-free-clash-nyanpasu.htm" title="8月17日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月17日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-clash-nyanpasu.htm" title="11月19日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月19日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-6-free-node-subscribe-links.htm" title="9月6日 - 最高速度18.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月6日 - 最高速度18.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-26-linux-clash-nyanpasu.htm" title="8月26日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月26日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-5-node-share-links.htm" title="10月5日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月5日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-clash-nyanpasu.htm" title="11月7日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月7日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-17-free-node-subscribe-links.htm" title="10月17日 - 最高速度18.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月17日 - 最高速度18.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe-links.htm" title="11月2日 - 最高速度18.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月2日 - 最高速度18.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
