@@ -2,10 +2,9 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://clash-nyanpasu.github.io" />
-    <title>2024-10归档 - Clash Nyanpasu官方节点站</title>
-        <meta name="keywords" content="2024-10归档" />
-        <meta name="description" content="2024-10归档" />
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-25069.htm" />
+    <title>Pytorch Conv1d()</title>
+        <meta name="description" content="Conv1d  class torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=" />
         <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
@@ -32,7 +31,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
         <div class="em40_header_area_main">
         <div class="tx_top2_relative">
             <div class="all_header_abs">
@@ -120,12 +119,13 @@
             <div class="row">
                 <div class="col-md-12 txtc  text-center ccase">
                     <div class="brpt brptsize">
-                        <h1 class="brcrumb_title">2024-10 归档</h1>
+                        <h1 class="brcrumb_title">Pytorch Conv1d()</h1>
                     </div>
                     <div class="breadcumb-inner">
                         <ul>
                             <li><a href="/">首页</a></li>
-                            <li>-<span class="current">2024-10 归档</span></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
                         </ul>
                     </div>
                 </div>
@@ -138,31 +138,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-01">
-                            <div class="col-md-3">
-                                <div class="ab_left_img">
-                                    <div class="ab_top_img wow animated-slow animated fadeIn">
-                                        <a href="/free-nodes/2024-10-1-node-share-links.htm" class="xcblog-blog-url">
-                                            <img src="/uploads/20240728/d8735ed5582bda5b988b171de7dce889.webp" alt="10月1日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">
-                                        </a>
+                                      				  				  				<div id="content_views" class="htmledit_views"> <h2>Conv1d</h2> </h1> <p id="class-torchnnconv1din95channels-out95channels-kernel95size-stride1-padding0-dilation1-groups1-biastrue">class torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)</p> <ul> <li>in_channels(<code>int</code>) – 输入信号的通道。在文本分类中，即为词向量的维度</li> <li>out_channels(<code>int</code>) – 卷积产生的通道。有多少个out_channels，就需要多少个1维卷积，实际上就是卷积核的数目。</li> <li>kernel_size(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>) - 卷积核的尺寸，卷积核的大小为(k,)，第二个维度是由in_channels来决定的，所以实际上卷积大小为kernel_size*in_channels</li> <li>stride(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>,&nbsp;<code>optional</code>) - 卷积步长</li> <li>padding (<code>int</code>&nbsp;or&nbsp;<code>tuple</code>,&nbsp;<code>optional</code>)- 输入的每一条边补充0的层数</li> <li>dilation(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>, `optional``) – 卷积核元素之间的间距</li> <li>groups(<code>int</code>,&nbsp;<code>optional</code>) – 从输入通道到输出通道的阻塞连接数</li> <li>bias(<code>bool</code>,&nbsp;<code>optional</code>) - 如果<code>bias=True</code>，添加偏置</li> </ul> <h2>二：怎么去理解这些参数</h2> <p>例如我们输入的矩阵是：(N * in_channels * Lin)，这里N是批次大小，in_channels是我们向量的行，Lin是我们向量的列</p> <p>官方文档说我们最后输出是(N,out_channels,Lout)</p> <p>具体是怎么做的呢？</p> <p>&nbsp;in_channels(<code>int</code>) – 输入信号的通道。在文本分类中，即为词向量的维度，也可以理解是输入数据的行</p> <p>out_channels(<code>int</code>) – 卷积产生的通道。相当于我们希望输出的行。一个卷积核对应一组输出，N个卷积核对应N组输出。而卷积核的数量不用我们给出，我们只要给出kernel_size就行</p> <p>kernel_size(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>) - 卷积核的尺寸，卷积核的大小为(k,)，第二个维度是由in_channels来决定的，所以实际上卷积大小为kernel_size*in_channels</p> <p>我们输出的矩阵是（N,out_channels,Lout）</p> <p>而Lout = (Lin - kernel_size + 1) / stride&nbsp;</p> <p>例如：</p> <pre><code class="language-python">conv1 = nn.Conv1d(in_channels=256,out_channels=100,kernel_size=2) input = torch.randn(32,256,35) out = conv1(input) print(out.size()) #输出结果为：(32,100,34)</code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-24606.htm">vue导入Excel数据到表格</a></p>
+                                        <p>下一个：<a href="/news/article-25070.htm">附近宠物领养中心在哪里（附近有宠物狗狗领养吗）</a></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="tts text-left">
-                                    <div class="ttin">
-                                        <a href="/free-nodes/2024-10-1-node-share-links.htm" class="xcblog-blog-url">
-                                            <h3 class="txbdstitle sttwo hlight xcblog-blog-title">10月1日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</h3>
-                                        </a>
-                                        <p>这一次的节点更新覆盖了韩国、加拿大、日本、美国、新加坡、香港、欧洲等地区,最高速度可达19.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
-                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -170,16 +151,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-1-node-share-links.htm" title="10月1日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月1日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-clash-nyanpasu.htm" title="11月30日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月30日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-21-free-clash-nyanpasu.htm" title="8月21日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月21日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-subscribe-node.htm" title="11月21日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月21日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-16-clash-nyanpasu.htm" title="9月16日 - 最高速度22.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月16日 - 最高速度22.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-22750.htm" title="SpringBoot-2-3-x分层构建Docker镜像实践，docker教程学习">SpringBoot-2-3-x分层构建Docker镜像实践，docker教程学习</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-5-clash-nyanpasu.htm" title="11月5日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月5日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-subscribe-node.htm" title="12月13日 - 最高速度20.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月13日 - 最高速度20.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-26-node-share.htm" title="9月26日 - 最高速度21.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月26日 - 最高速度21.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-30-free-clash-nyanpasu.htm" title="7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24141.htm" title="Spring Boot: 定时任务注解@Scheduled以及动态任务SchedulingConfigurer 实践">Spring Boot: 定时任务注解@Scheduled以及动态任务SchedulingConfigurer 实践</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-high-speed-nodes.htm" title="12月3日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月3日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-20-clash-nyanpasu-node.htm" title="8月20日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月20日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-clash-nyanpasu-node.htm" title="10月15日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月15日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-node-share-links.htm" title="10月30日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月30日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22296.htm" title="全国动物疫苗生产厂家排名前十名 全国动物疫苗生产厂家排名前十名有哪些">全国动物疫苗生产厂家排名前十名 全国动物疫苗生产厂家排名前十名有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-linux-clash-nyanpasu.htm" title="10月25日 - 最高速度20.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月25日 - 最高速度20.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-clash-nyanpasu-node.htm" title="12月4日 - 最高速度22.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月4日 - 最高速度22.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="10月14日 - 最高速度21.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月14日 - 最高速度21.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25070.htm" title="附近宠物领养中心在哪里（附近有宠物狗狗领养吗）">附近宠物领养中心在哪里（附近有宠物狗狗领养吗）</a></li>
                     </ul>
     </div>
 </div>
