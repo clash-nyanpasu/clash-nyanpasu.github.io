@@ -138,7 +138,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				</h1> <p>当我们在Python中写一个class时，如果有一部分的成员变量需要用一个字典来命名和赋值，此时应该如何操作呢？这个场景最常见于从一个文件（比如json、npz之类的文件）中读取字典变量到内存当中，再赋值给一个类的成员变量，或者已经生成的实例变量。</p> </h1> <p>在python中直接支持了<code>__dict__.update()</code>这样的方法来操作，避免了对locals()、vars()和eval()函数的使用，我们可以直接看这样的一个案例：</p> <pre><code class="language-python">In [1]: dict_a = {'a':1, 'b':2}  In [2]: dict_b = {'c':3}  In [3]: class D(object):    ...:     def __init__(self):    ...:         self.d = 4    ...:         self.__dict__.update(dict_a)    ...:         self.__dict__.update(dict_b)    ...:   In [4]: new_D = D()  In [5]: new_D.__dict__ Out[5]: {'d': 4, 'a': 1, 'b': 2, 'c': 3}  In [6]: new_D.a Out[6]: 1  In [7]: new_D.c Out[7]: 3</code></pre> <p>在这个案例中，我们在类的外部定义了两个字典<code>dict_a</code>和<code>dict_b</code>，字典的key值都是字符串的格式。而我们知道字符串格式在python中如果不使用eval，是不能直接作为变量名来使用的。而通过<code>__dict__.update()</code>的方法将字典导入后，会自动识别其中所有的key和value值，转而赋值给当前类作为成员变量。但是这个方法有一个缺点是，只能通过单层的字典来赋值，如果遇到有层级结构的字典，是不会自动分辨层级结构进行赋值的，比如下方的代码：</p> <pre><code class="language-python">In [15]: dict_a = {'f':{'h':8},'g':7}  In [16]: new_D = D()  In [17]: new_D.__dict__ Out[17]: {'d': 4, 'f': {'h': 8}, 'g': 7, 'c': 3}</code></pre> </h1> <p>根据上一个章节中最后提到的这个特殊场景，我们需要对字典内的元素进行递归，如果遇到嵌套的字典元素，则递归的将该元素添加到下一层级的成员变量中，具体代码如下所示：</p> <pre><code class="language-python">dict_a = {'f':{'h':8},'g':7} dict_b = {'c':3}  class D:     def __init__(self, *args):         for arg in args:             for k, v in arg.items():                 if isinstance(v, dict):                     self.__dict__[k] = D(v)                 else:                     self.__dict__[k] = v  new_D = D(dict_a, dict_b) print (new_D.__dict__) print (new_D.f.h)</code></pre> <p>最终的输出结果如下所示：</p> <pre><code class="language-bash">{'f': &lt;__main__.D object at 0x7fd2f32a4340&gt; , 'g': 7, 'c': 3} 8</code></pre> <p>可以看到，我们最终通过<code>new_D.f.h</code>的方法，成功读取了原有的嵌套字典中的value。虽然这种写法看起来不是很优雅，但是似乎也没有更好的解决方案。并且，通过这个小问题的实践，发现了另外一个略有意思的问题：对python中的字典类型进行更新时，如果key的字符串中带有点号，比如<code>parDict['group1.b'] = 3</code>，只能通过这样的字符串的形式进行更新，如果使用<code>parDict.update(group1.b=4)</code>则会发生报错，这是因为点号在python中不是一个标识符，不能用于命名，原文内容如下：</p> <blockquote> <p>The valid characters for identifiers are the same as in Python 2.x: the uppercase and lowercase letters A through Z, the underscore _ and, except for the first character, the digits 0 through 9.</p> </blockquote> </h1> <p>本文所解决的问题场景是这样的：如果给定一个字典，比如一般从json文件或者npz文件中加载出来的数据都是字典的数据结构，如果我们希望把这个字典赋值给一个类，且使得字典的key和value分别作为类的成员变量名和成员变量值，那么该如何实现呢？对于一个展平的字典而言（没有嵌套字典），我们直接使用update就可以将字典中的所有key和value转变为当前类的成员变量。比较麻烦的是包含有嵌套字典的层级结构字典，此时我们只能使用循环，并且递归的对类的成员变量进行赋值。</p> <ol></ol> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <p>当我们在Python中写一个class时，如果有一部分的成员变量需要用一个字典来命名和赋值，此时应该如何操作呢？这个场景最常见于从一个文件（比如json、npz之类的文件）中读取字典变量到内存当中，再赋值给一个类的成员变量，或者已经生成的实例变量。</p> </h1> <p>在python中直接支持了<code>__dict__.update()</code>这样的方法来操作，避免了对locals()、vars()和eval()函数的使用，我们可以直接看这样的一个案例：</p> <pre><code class="language-python">In [1]: dict_a = {'a':1, 'b':2}  In [2]: dict_b = {'c':3}  In [3]: class D(object):    ...:     def __init__(self):    ...:         self.d = 4    ...:         self.__dict__.update(dict_a)    ...:         self.__dict__.update(dict_b)    ...:   In [4]: new_D = D()  In [5]: new_D.__dict__ Out[5]: {'d': 4, 'a': 1, 'b': 2, 'c': 3}  In [6]: new_D.a Out[6]: 1  In [7]: new_D.c Out[7]: 3</code></pre> <p>在这个案例中，我们在类的外部定义了两个字典<code>dict_a</code>和<code>dict_b</code>，字典的key值都是字符串的格式。而我们知道字符串格式在python中如果不使用eval，是不能直接作为变量名来使用的。而通过<code>__dict__.update()</code>的方法将字典导入后，会自动识别其中所有的key和value值，转而赋值给当前类作为成员变量。但是这个方法有一个缺点是，只能通过单层的字典来赋值，如果遇到有层级结构的字典，是不会自动分辨层级结构进行赋值的，比如下方的代码：</p> <pre><code class="language-python">In [15]: dict_a = {'f':{'h':8},'g':7}  In [16]: new_D = D()  In [17]: new_D.__dict__ Out[17]: {'d': 4, 'f': {'h': 8}, 'g': 7, 'c': 3}</code></pre> </h1> <p>根据上一个章节中最后提到的这个特殊场景，我们需要对字典内的元素进行递归，如果遇到嵌套的字典元素，则递归的将该元素添加到下一层级的成员变量中，具体代码如下所示：</p> <pre><code class="language-python">dict_a = {'f':{'h':8},'g':7} dict_b = {'c':3}  class D:     def __init__(self, *args):         for arg in args:             for k, v in arg.items():                 if isinstance(v, dict):                     self.__dict__[k] = D(v)                 else:                     self.__dict__[k] = v  new_D = D(dict_a, dict_b) print (new_D.__dict__) print (new_D.f.h)</code></pre> <p>最终的输出结果如下所示：</p> <pre><code class="language-bash">{'f': &lt;__main__.D object at 0x7fd2f32a4340&gt; , 'g': 7, 'c': 3} 8</code></pre> <p>可以看到，我们最终通过<code>new_D.f.h</code>的方法，成功读取了原有的嵌套字典中的value。虽然这种写法看起来不是很优雅，但是似乎也没有更好的解决方案。并且，通过这个小问题的实践，发现了另外一个略有意思的问题：对python中的字典类型进行更新时，如果key的字符串中带有点号，比如<code>parDict['group1.b'] = 3</code>，只能通过这样的字符串的形式进行更新，如果使用<code>parDict.update(group1.b=4)</code>则会发生报错，这是因为点号在python中不是一个标识符，不能用于命名，原文内容如下：</p> <blockquote> <p>The valid characters for identifiers are the same as in Python 2.x: the uppercase and lowercase letters A through Z, the underscore _ and, except for the first character, the digits 0 through 9.</p> </blockquote> </h1> <p>本文所解决的问题场景是这样的：如果给定一个字典，比如一般从json文件或者npz文件中加载出来的数据都是字典的数据结构，如果我们希望把这个字典赋值给一个类，且使得字典的key和value分别作为类的成员变量名和成员变量值，那么该如何实现呢？对于一个展平的字典而言（没有嵌套字典），我们直接使用update就可以将字典中的所有key和value转变为当前类的成员变量。比较麻烦的是包含有嵌套字典的层级结构字典，此时我们只能使用循环，并且递归的对类的成员变量进行赋值。</p> <ol></ol> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-23221.htm">猫最忌讳的三个属相（有些人命里不能养猫）</a></p>
                                         <p>下一个：<a href="/news/article-23675.htm">宠物粮基地哪里的好用啊（宠物粮基地哪里的好用啊多少钱）</a></p>
@@ -151,16 +152,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-19090.htm" title="Java中的hashcode方法">Java中的hashcode方法</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-23-node-share-links.htm" title="9月23日 - 最高速度20M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月23日 - 最高速度20M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-25-node-share-links.htm" title="9月25日 - 最高速度19.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月25日 - 最高速度19.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-31-free-subscribe-node.htm" title="7月31日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">7月31日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-30-free-clash-nyanpasu.htm" title="7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">7月30日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-5-clash-nyanpasu.htm" title="11月5日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月5日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-1-free-clash-nyanpasu.htm" title="8月1日 - 最高速度21.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月1日 - 最高速度21.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-17-free-clash-nyanpasu.htm" title="8月17日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月17日 - 最高速度22.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-20-clash-nyanpasu-node.htm" title="8月20日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月20日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-high-speed-nodes.htm" title="12月5日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月5日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-node-share-links.htm" title="11月6日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月6日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25524.htm" title="宠物疫苗可以上地铁吗北京（北京宠物猫可以上地铁吗）">宠物疫苗可以上地铁吗北京（北京宠物猫可以上地铁吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-high-speed-nodes.htm" title="10月18日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月18日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-4-free-node-subscribe-links.htm" title="9月4日 - 最高速度20M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月4日 - 最高速度20M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-node-subscribe.htm" title="11月18日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月18日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27857.htm" title="领养狗需要房产证（领养狗需要房产证吗）">领养狗需要房产证（领养狗需要房产证吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-node-subscribe-links.htm" title="11月11日 - 最高速度19.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月11日 - 最高速度19.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-14-free-node-subscribe.htm" title="8月14日 - 最高速度22.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月14日 - 最高速度22.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-linux-clash-nyanpasu.htm" title="12月15日 - 最高速度19.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月15日 - 最高速度19.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-high-speed-nodes.htm" title="11月25日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月25日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -172,7 +173,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">38</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">56</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -204,6 +205,15 @@
             <div class="row">
                 <div class="col-md-12 footer_style_1">
                     <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                         <p>
                             Clash Nyanpasu官方节点站 版权所有
                             <br />

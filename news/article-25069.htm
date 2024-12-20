@@ -138,7 +138,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <h2>Conv1d</h2> </h1> <p id="class-torchnnconv1din95channels-out95channels-kernel95size-stride1-padding0-dilation1-groups1-biastrue">class torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)</p> <ul> <li>in_channels(<code>int</code>) – 输入信号的通道。在文本分类中，即为词向量的维度</li> <li>out_channels(<code>int</code>) – 卷积产生的通道。有多少个out_channels，就需要多少个1维卷积，实际上就是卷积核的数目。</li> <li>kernel_size(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>) - 卷积核的尺寸，卷积核的大小为(k,)，第二个维度是由in_channels来决定的，所以实际上卷积大小为kernel_size*in_channels</li> <li>stride(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>,&nbsp;<code>optional</code>) - 卷积步长</li> <li>padding (<code>int</code>&nbsp;or&nbsp;<code>tuple</code>,&nbsp;<code>optional</code>)- 输入的每一条边补充0的层数</li> <li>dilation(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>, `optional``) – 卷积核元素之间的间距</li> <li>groups(<code>int</code>,&nbsp;<code>optional</code>) – 从输入通道到输出通道的阻塞连接数</li> <li>bias(<code>bool</code>,&nbsp;<code>optional</code>) - 如果<code>bias=True</code>，添加偏置</li> </ul> <h2>二：怎么去理解这些参数</h2> <p>例如我们输入的矩阵是：(N * in_channels * Lin)，这里N是批次大小，in_channels是我们向量的行，Lin是我们向量的列</p> <p>官方文档说我们最后输出是(N,out_channels,Lout)</p> <p>具体是怎么做的呢？</p> <p>&nbsp;in_channels(<code>int</code>) – 输入信号的通道。在文本分类中，即为词向量的维度，也可以理解是输入数据的行</p> <p>out_channels(<code>int</code>) – 卷积产生的通道。相当于我们希望输出的行。一个卷积核对应一组输出，N个卷积核对应N组输出。而卷积核的数量不用我们给出，我们只要给出kernel_size就行</p> <p>kernel_size(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>) - 卷积核的尺寸，卷积核的大小为(k,)，第二个维度是由in_channels来决定的，所以实际上卷积大小为kernel_size*in_channels</p> <p>我们输出的矩阵是（N,out_channels,Lout）</p> <p>而Lout = (Lin - kernel_size + 1) / stride&nbsp;</p> <p>例如：</p> <pre><code class="language-python">conv1 = nn.Conv1d(in_channels=256,out_channels=100,kernel_size=2) input = torch.randn(32,256,35) out = conv1(input) print(out.size()) #输出结果为：(32,100,34)</code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>Conv1d</h2> </h1> <p id="class-torchnnconv1din95channels-out95channels-kernel95size-stride1-padding0-dilation1-groups1-biastrue">class torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)</p> <ul> <li>in_channels(<code>int</code>) – 输入信号的通道。在文本分类中，即为词向量的维度</li> <li>out_channels(<code>int</code>) – 卷积产生的通道。有多少个out_channels，就需要多少个1维卷积，实际上就是卷积核的数目。</li> <li>kernel_size(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>) - 卷积核的尺寸，卷积核的大小为(k,)，第二个维度是由in_channels来决定的，所以实际上卷积大小为kernel_size*in_channels</li> <li>stride(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>,&nbsp;<code>optional</code>) - 卷积步长</li> <li>padding (<code>int</code>&nbsp;or&nbsp;<code>tuple</code>,&nbsp;<code>optional</code>)- 输入的每一条边补充0的层数</li> <li>dilation(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>, `optional``) – 卷积核元素之间的间距</li> <li>groups(<code>int</code>,&nbsp;<code>optional</code>) – 从输入通道到输出通道的阻塞连接数</li> <li>bias(<code>bool</code>,&nbsp;<code>optional</code>) - 如果<code>bias=True</code>，添加偏置</li> </ul> <h2>二：怎么去理解这些参数</h2> <p>例如我们输入的矩阵是：(N * in_channels * Lin)，这里N是批次大小，in_channels是我们向量的行，Lin是我们向量的列</p> <p>官方文档说我们最后输出是(N,out_channels,Lout)</p> <p>具体是怎么做的呢？</p> <p>&nbsp;in_channels(<code>int</code>) – 输入信号的通道。在文本分类中，即为词向量的维度，也可以理解是输入数据的行</p> <p>out_channels(<code>int</code>) – 卷积产生的通道。相当于我们希望输出的行。一个卷积核对应一组输出，N个卷积核对应N组输出。而卷积核的数量不用我们给出，我们只要给出kernel_size就行</p> <p>kernel_size(<code>int</code>&nbsp;or&nbsp;<code>tuple</code>) - 卷积核的尺寸，卷积核的大小为(k,)，第二个维度是由in_channels来决定的，所以实际上卷积大小为kernel_size*in_channels</p> <p>我们输出的矩阵是（N,out_channels,Lout）</p> <p>而Lout = (Lin - kernel_size + 1) / stride&nbsp;</p> <p>例如：</p> <pre><code class="language-python">conv1 = nn.Conv1d(in_channels=256,out_channels=100,kernel_size=2) input = torch.randn(32,256,35) out = conv1(input) print(out.size()) #输出结果为：(32,100,34)</code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-24606.htm">vue导入Excel数据到表格</a></p>
                                         <p>下一个：<a href="/news/article-25070.htm">附近宠物领养中心在哪里（附近有宠物狗狗领养吗）</a></p>
@@ -151,16 +152,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe.htm" title="11月20日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月20日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-8-clash-nyanpasu.htm" title="10月8日 - 最高速度20.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月8日 - 最高速度20.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-free-node-subscribe.htm" title="9月13日 - 最高速度20.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月13日 - 最高速度20.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-9-12-clash-nyanpasu-node.htm" title="9月12日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月12日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-18-clash-nyanpasu-node.htm" title="9月18日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月18日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-24141.htm" title="Spring Boot: 定时任务注解@Scheduled以及动态任务SchedulingConfigurer 实践">Spring Boot: 定时任务注解@Scheduled以及动态任务SchedulingConfigurer 实践</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-30-node-share-links.htm" title="10月30日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月30日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-29-node-share-links.htm" title="7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">7月29日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27393.htm" title="宠物寄养协议书（宠物寄养协议书可以产生法律效应吗）">宠物寄养协议书（宠物寄养协议书可以产生法律效应吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-node-subscribe-links.htm" title="12月14日 - 最高速度19.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月14日 - 最高速度19.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-11-clash-nyanpasu.htm" title="9月11日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月11日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-10-clash-nyanpasu.htm" title="9月10日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月10日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-free-high-speed-nodes.htm" title="11月17日 - 最高速度18M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月17日 - 最高速度18M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-24-free-node-subscribe.htm" title="8月24日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月24日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-10-24-clash-nyanpasu-node.htm" title="10月24日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月24日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-subscribe-node.htm" title="11月21日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月21日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-clash-nyanpasu.htm" title="11月10日 - 最高速度18.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月10日 - 最高速度18.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-clash-nyanpasu-node.htm" title="11月28日 - 最高速度18.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月28日 - 最高速度18.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -172,7 +173,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">44</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">56</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -204,6 +205,15 @@
             <div class="row">
                 <div class="col-md-12 footer_style_1">
                     <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                         <p>
                             Clash Nyanpasu官方节点站 版权所有
                             <br />
