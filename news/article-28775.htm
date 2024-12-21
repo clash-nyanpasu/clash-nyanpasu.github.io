@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-28322.htm" />
-    <title>python函数参数的默认参数、元组参数和字典参数例解</title>
-        <meta name="description" content="python函数除了不带参数，带固定参数之外，还有另外三类函数参数有重要使用价值，是提升python水平需要强化的内容。它们是默认参数、元组参数和字典参数。下面举例子说明。 1.默认参数 即在函数定义" />
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-28775.htm" />
+    <title>BeanDefinitionRegistryPostProcessor和BeanFactoryPostProcessor以及BeanPostProcessor执行先后顺序</title>
+        <meta name="description" content="1、BeanDefinitionRegistryPostProcessor和BeanFactoryPostProcessor以及BeanPostProcessor都属于Spring的后置处理器，可以实" />
         <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
@@ -119,7 +119,7 @@
             <div class="row">
                 <div class="col-md-12 txtc  text-center ccase">
                     <div class="brpt brptsize">
-                        <h1 class="brcrumb_title">python函数参数的默认参数、元组参数和字典参数例解</h1>
+                        <h1 class="brcrumb_title">BeanDefinitionRegistryPostProcessor和BeanFactoryPostProcessor以及BeanPostProcessor执行先后顺序</h1>
                     </div>
                     <div class="breadcumb-inner">
                         <ul>
@@ -139,10 +139,10 @@
             <div class="row">
                 <div class="col-md-9">
                                     <input type="hidden" id="share-website-info" data-name="" data-url="">
-                  				  				  				<div id="content_views" class="htmledit_views"> <p>python函数除了不带参数，带固定参数之外，还有另外三类函数参数有重要使用价值，是提升python水平需要强化的内容。它们是默认参数、元组参数和字典参数。下面举例子说明。</p> <p>1.默认参数</p> <p>即在函数定义时赋值的参数。</p> <pre class="has"><code class="hljs language-python">#默认参数主要是为了减少重复输入的次数。 def func_default(x,y=100,z="good"):     print(x,y,z)  func_default(78) func_default(78,99) func_default(78,99,"电影") func_default(x=120,z="电视剧") func_default(z="喜剧",x=500)#参数可以调换位置。 </code></pre> <p>输出是：</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="203" src="http://img.555519.xyz/uploads/20221228/aa48c732e0d54dc99dc474a778898e85.jpg"></p> <p>2.以元组为参数</p> <p>以元组为参数时在参数名前加一个“*”号以示区别。</p> <pre class="has"><code class="hljs language-python">#以元组作为参数 def func_tuple(name,*args):     print(name + " 有以下雅称:")     for i in args:         print(i)  func_tuple("孙悟空","monkey","maomao","xueba")</code></pre> <p>输出是：</p> <p><img decoding="async" alt="" class="has" height="75" src="http://img.555519.xyz/uploads/20221228/a0f69dbf6eef4d3b0e1b2ea43417a193.jpg"></p> <p>3.以字典作为参数</p> <p>参数名前加“**”以示区别。</p> <pre class="has"><code class="hljs language-python">#以字典（键值对）作为参数 def func_dict(**kwargs):     print("参数的格式为：",type(kwargs))     for i in kwargs:#输出值         print(kwargs[i])     for i in kwargs:#输出键         print(i)     for i in kwargs:#输出键值         print(i,kwargs[i])     for i in kwargs:#输出所有键值i次         print(kwargs) func_dict(aa=1,bb=2,cc=3)#注意赋值方式</code></pre> <p>输出是：</p> <p><img decoding="async" alt="" class="has" height="247" src="http://img.555519.xyz/uploads/20221228/81b09ae9ede38333bbdd4b20f9de0ba9.jpg"></p> <p>4.一个综合的例子</p> <pre class="has"><code class="hljs language-python">#综合例子 # 带一个*的是元组，带两个星号的是字典。 def total(a=5,*numbers,**phonebook):     print('a',a)     for single_item in numbers:         print('single_item',single_item)     for first_part,second_part in phonebook.items():         print(first_part,second_part) total(10,1,2,3,Jack=1123,John=2231,Inge=1560)</code></pre> <p>输出是：</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="138" src="http://img.555519.xyz/uploads/20221228/080bc1efeeeee5418bdbe1f9b4b180e5.jpg"></p> </p></div> 			                <div class="clearfix"></div>
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>1、BeanDefinitionRegistryPostProcessor和BeanFactoryPostProcessor以及BeanPostProcessor都属于Spring的后置处理器，可以实现它们以达到动态注册bean定义，动态修改bean定义，以及动态修改bean。</p> <p>2、BeanDefinitionRegistryPostProcessor继承接口BeanFactoryPostProcessor，该接口新增postProcessBeanDefinitionRegistry方法，方法参数是BeanDefinitionRegistry对象，BeanDefinitionRegistry对象是bean定义的保存中心。</p> <p>3、BeanFactoryPostProcessor是一个接口，它允许自定义修改应用程序上下文的bean定义，在基于bean factory上调整上下文的bean属性值。BeanFactoryPostProcessor可以与bean交互并修改bean定义，但从不使用bean实例。</p> <p>4、BeanPostProcessor也是一个接口，它允许动态修改应用程序上下文的bean，这时候bean已经实例化成功。</p> <p>5、三者执行顺序：BeanDefinitionRegistryPostProcessor优先于BeanFactoryPostProcessor执行，BeanFactoryPostProcessor优先于BeanPostProcessor执行。</p> <p>6、代码示例：</p> <p>BeanDefinitionRegistryPostProcessor实现类</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="361" src="http://img.555519.xyz/uploads/20230217/3735b7f0251d63ad716dd8f6792545f2.jpg"></p> <p>BeanFactoryPostProcessor实现类</p> <p><img decoding="async" alt="" class="has" height="261" src="http://img.555519.xyz/uploads/20230217/e06b8debd9616573d6c8c8010e9e7831.jpg"></p> <p>BeanPostProcessor实现类</p> <p><img decoding="async" alt="" class="has" height="490" src="http://img.555519.xyz/uploads/20230217/3ae0dcc66437d5015e853e440d7cc128.jpg"></p> <p>执行结果：</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="228" src="http://img.555519.xyz/uploads/20230217/844adf4d7d06dbd8f5b76c7a7cabc4c1.jpg"></p> <p><img loading="lazy" decoding="async" alt="" class="has" height="161" src="http://img.555519.xyz/uploads/20230217/89950aaaa47c8b2188cce6ac54863560.jpg"></p> <p><img loading="lazy" decoding="async" alt="" class="has" height="157" src="http://img.555519.xyz/uploads/20230217/b56df9d32b8185011946345842b1577d.jpg"></p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-28321.htm">【Python开发】2. 变量、基本数据类型及其转换</a></p>
-                                        <p>下一个：<a href="/news/article-28775.htm">BeanDefinitionRegistryPostProcessor和BeanFactoryPostProcessor以及BeanPostProcessor执行先后顺序</a></p>
+                                        <p>上一个：<a href="/news/article-28322.htm">python函数参数的默认参数、元组参数和字典参数例解</a></p>
+                                        <p>下一个：<a href="/news/article-28776.htm">加工狗粮机器设备厂家（加工狗粮设备多少钱）</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -152,16 +152,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-8-28-node-share.htm" title="8月28日 - 最高速度20.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月28日 - 最高速度20.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-15-linux-clash-nyanpasu.htm" title="12月15日 - 最高速度19.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月15日 - 最高速度19.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-clash-nyanpasu.htm" title="11月10日 - 最高速度18.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月10日 - 最高速度18.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-4-free-node-subscribe-links.htm" title="9月4日 - 最高速度20M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月4日 - 最高速度20M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-subscribe-node.htm" title="12月13日 - 最高速度20.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月13日 - 最高速度20.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-3-node-share.htm" title="8月3日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月3日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-4-free-subscribe-node.htm" title="11月4日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月4日 - 最高速度21.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-22-clash-nyanpasu-node.htm" title="10月22日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月22日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20922.htm" title="feign.sentinel.enabled=true 启动报错">feign.sentinel.enabled=true 启动报错</a></li>
-                        <li class="py-2"><a href="/news/article-19090.htm" title="Java中的hashcode方法">Java中的hashcode方法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-node-share.htm" title="9月27日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月27日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23674.htm" title="Python中将字典转为成员变量详解">Python中将字典转为成员变量详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-clash-nyanpasu-node.htm" title="10月15日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月15日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-22-free-node-subscribe-links.htm" title="8月22日 - 最高速度22.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月22日 - 最高速度22.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-node-subscribe-links.htm" title="12月7日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月7日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25070.htm" title="附近宠物领养中心在哪里（附近有宠物狗狗领养吗）">附近宠物领养中心在哪里（附近有宠物狗狗领养吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-12-clash-nyanpasu-node.htm" title="9月12日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月12日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26919.htm" title="淮南领养狗（淮南领养猫咪）">淮南领养狗（淮南领养猫咪）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-clash-nyanpasu.htm" title="9月28日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月28日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-clash-nyanpasu.htm" title="11月19日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月19日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
