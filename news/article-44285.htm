@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-44285.htm" />
+    <title>Feign实现远程接口的调用</title>
+        <meta name="description" content="目录 一.Feign介绍 二.Feign使用步骤  一.Feign介绍 在开发中，我们常用httpClient去远程调用其他系统的接口，需要我们指定调用的url，Feign 是一个声明式的 Web S" />
+        <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-44285.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="Feign实现远程接口的调用" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/245a741981554cde7bf369d3b207fbb0.webp" />
+        <meta property="og:release_date" content="2025-01-22T10:11:13" />
+    <meta property="og:updated_time" content="2025-01-22T10:11:13" />
+        <meta property="og:description" content="目录 一.Feign介绍 二.Feign使用步骤  一.Feign介绍 在开发中，我们常用httpClient去远程调用其他系统的接口，需要我们指定调用的url，Feign 是一个声明式的 Web S" />
+        
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Feign实现远程接口的调用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Favicon Icon -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/plugin_theme_css.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/responsive.css">
+    <!-- modernizr js -->
+    <script src="/assets/website/js/frontend/clash_nyanpasu/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY15Z3XB3H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PY15Z3XB3H');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="em40_header_area_main">
+        <div class="tx_top2_relative">
+            <div class="all_header_abs">
+                <div class="techsold-main-menu one_page menu4 heading_style_4 witr_h_h6">
+                    <div class="techsold_nav_area transprent-menu scroll_fixed bdbar">
+                        <div class="container">
+                            <div class="row logo-left">
+                                <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                    <div class="logo">
+                                                                                <a href="/">
+                                            Clash Nyanpasu
+                                        </a>
+                                                                            </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12">
+                                    <nav class="techsold_menu">
+                                        <ul class="sub-menu">
+                                                                                        <li><a href="/">首页</a></li>
+                                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                                        <li><a href="#">关于</a></li>
+                                            <li><a href="#">联系</a></li>
+                                        </ul>
+                                    </nav>
+                                    <!-- MAIN MENU -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="mobile_logo_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mobilemenu_con">
+                        <div class="mobile_menu_logo text-center">
+                                                        <a href="/">
+                                Clash Nyanpasu
+                            </a>
+                                                    </div>
+                        <div class="mobile_menu_option">
+                            <div class="mobile_menu_o mobile_opicon">
+                                <i class="icofont-navigation-menu openclass"></i>
+                            </div>
+                            <div class="mobile_menu_inner mobile_p">
+                                <div class="mobile_menu_content">
+                                    <div class="mobile_menu_logo text-center">
+                                                                                <a href="/">
+                                            Clash Nyanpasu
+                                        </a>
+                                                                            </div>
+                                    <div class="menu_area mobile-menu">
+                                        <nav class="techsold_menu">
+                                            <ul class="sub-menu">
+                                                                                                <li><a href="/">首页</a></li>
+                                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                                <li><a href="#">关于</a></li>
+                                                <li><a href="#">联系</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="mobile_menu_o mobile_cicon">
+                                        <i class="icofont-close closeclass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobile_overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mobile Menu -->
+    <!-- breadcumb area -->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 txtc  text-center ccase">
+                    <div class="brpt brptsize">
+                        <h1 class="brcrumb_title">Feign实现远程接口的调用</h1>
+                    </div>
+                    <div class="breadcumb-inner">
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcumb area -->
+    <!-- about area -->
+    <div class="ts_about_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><strong>目录</strong></p> <p id="%E4%B8%80.Feign%E4%BB%8B%E7%BB%8D-toc" style="margin-left:40px;"><a href="#%E4%B8%80.Feign%E4%BB%8B%E7%BB%8D" rel="nofollow">一.Feign介绍</a></p> <p id="%E4%BA%8C.Feign%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4-toc" style="margin-left:40px;"><a href="#%E4%BA%8C.Feign%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4" rel="nofollow">二.Feign使用步骤</a></p> <hr id="hr-toc"/> <h2 id="%E4%B8%80.Feign%E4%BB%8B%E7%BB%8D">一.Feign介绍</h2> <p>在开发中，我们常用httpClient去远程调用其他系统的接口，需要我们指定调用的url，Feign 是一个声明式的 Web Service 客户端，它实现了一套远程调用的方法，调用的方式也更为优雅。</p> <p>前提：1.被调用的模块注册到eureka中，能正常运行</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.feign接口文件夹要和启动类在同一个目录下， 否则需指定包名，@EnableFeignClients(basePackages="com.**.***")</p> <h2 id="%E4%BA%8C.Feign%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4">二.Feign使用步骤</h2> <p>不同版本依赖可能略有区别</p> <p>2.1 添加feigh客户端依赖</p> <pre><code class="language-java">&lt;dependency&gt;     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;     &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt; &lt;/dependency&gt;</code></pre> <p>2.2 启动类上添加feign注解：@EnableFeignClients</p> <pre><code class="language-java">@SpringBootApplication @EnableDiscoveryClient @EnableFeignClients public class SIAPIApplication {     public static void main(String[] args) {         SpringApplication.run(SIAPIApplication.class, args);     }   }</code></pre> <p>2.3 application.yml配置文件添加配置信息</p> <pre><code>feign:   client:     config:       default:         connectTimeout: 10000         readTimeout: 10000</code></pre> <p>2.4 创建一个feign客户端，用于引入远程模块的接口：@FeignClient</p> <pre><code class="language-java"># 注册到eureka中的si-api模块名称 @FeignClient(value = "si-api")  public interface ApiOrderFlowService  {   &nbsp; &nbsp; &nbsp;// 这里定义了类似于SpringMVC用法的方法，就可以进行RESTful的调用了     /**      * 更新流程状态      */     @RequestMapping("flow/progressOrderFlow")     Result progressOrderFlow(@RequestParam("orderId") Long orderId);       /**      * 创建流程实例, 并关联指定订单      * @param orderId 指定订单ID      * @param  serviceOfferId 指定订单操作类型      * @return 流程数量      */     @RequestMapping("flow/createOrderFlowInst")     Result createOrderFlowInst(@RequestParam("orderId") Long orderId,                                @RequestParam("serviceOfferId") Integer serviceOfferId); }</code></pre> <p>2.5&nbsp; 在需要进行远程调用的方法里注入该接口，并调用对应的api接口方法</p> <pre><code class="language-java">    @Autowired     private ApiOrderFlowService apiOrderFlowService;</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-43791.htm">宠物粮食品牌名字4个字大全图片及价格 宠物粮食品牌名字4个字大全图片及价格</a></p>
+                                        <p>下一个：<a href="/news/article-44286.htm">学美容美发的正规学校推荐上海（上海学美容美发到哪个学校好）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-linux-clash-nyanpasu.htm" title="10月25日 - 最高速度20.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月25日 - 最高速度20.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36871.htm" title="动物疫苗未冷藏几小时失效（动物疫苗使用时的注意事项有哪些）">动物疫苗未冷藏几小时失效（动物疫苗使用时的注意事项有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-30191.htm" title="成都宠物疫苗批发市场在哪（成都宠物疫苗去哪打）">成都宠物疫苗批发市场在哪（成都宠物疫苗去哪打）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-clash-nyanpasu.htm" title="12月9日 - 最高速度21.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月9日 - 最高速度21.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-34004.htm" title="国内十大猫粮品牌排行榜对比（国内知名猫粮品牌）">国内十大猫粮品牌排行榜对比（国内知名猫粮品牌）</a></li>
+                        <li class="py-2"><a href="/news/article-27856.htm" title="有名的动物医院在哪里（动物医院有哪些）">有名的动物医院在哪里（动物医院有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-19090.htm" title="Java中的hashcode方法">Java中的hashcode方法</a></li>
+                        <li class="py-2"><a href="/news/article-20921.htm" title="将时间戳值增加微秒以将其转换为整数，MySQL将返回什么？">将时间戳值增加微秒以将其转换为整数，MySQL将返回什么？</a></li>
+                        <li class="py-2"><a href="/news/article-32572.htm" title="宠物店一般卖什么猫粮 宠物店一般卖什么猫粮比较好">宠物店一般卖什么猫粮 宠物店一般卖什么猫粮比较好</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-clash-nyanpasu-node.htm" title="12月10日 - 最高速度19.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月10日 - 最高速度19.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer area -->
+<div class="witrfm_area">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 footer_style_1">
+                    <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p>
+                            Clash Nyanpasu官方节点站 版权所有
+                            <br />
+                            Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include All JS -->
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery-3.5.1.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/bootstrap.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/slick.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/venobox.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.appear.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.knob.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme-pluginjs.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.meanmenu.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/ajax-mail.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
