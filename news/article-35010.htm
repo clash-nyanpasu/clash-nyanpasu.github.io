@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-35010.htm" />
     <title>golang中的panic</title>
         <meta name="description" content="数组越界,空指针引用等,这些运行时错误会引起panic异常 我们不应该通过调用panic函数来报告普通错误,而应该只把他作为报告致命错误的一种方式. 当某些不应该发生的场景发生时,我们就应该调用pan" />
         <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-35010.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="golang中的panic" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/5c2cf3a5a3d645d387a258da2f55333b.webp" />
+        <meta property="og:release_date" content="2025-01-03T00:19:00" />
+    <meta property="og:updated_time" content="2025-01-03T00:19:00" />
+        <meta property="og:description" content="数组越界,空指针引用等,这些运行时错误会引起panic异常 我们不应该通过调用panic函数来报告普通错误,而应该只把他作为报告致命错误的一种方式. 当某些不应该发生的场景发生时,我们就应该调用pan" />
+        
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="golang中的panic">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- Favicon Icon -->
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
@@ -152,16 +180,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-10-clash-nyanpasu-node.htm" title="12月10日 - 最高速度19.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月10日 - 最高速度19.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20922.htm" title="feign.sentinel.enabled=true 启动报错">feign.sentinel.enabled=true 启动报错</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-22-free-high-speed-nodes.htm" title="11月22日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月22日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-13-clash-nyanpasu.htm" title="10月13日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月13日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-21835.htm" title="宠物粮卖点 宠物粮卖点都有什么">宠物粮卖点 宠物粮卖点都有什么</a></li>
-                        <li class="py-2"><a href="/news/article-21372.htm" title="动物疫病预防控制中心周末上班吗（动物防疫站周六周日上班吗）">动物疫病预防控制中心周末上班吗（动物防疫站周六周日上班吗）</a></li>
-                        <li class="py-2"><a href="/news/article-26455.htm" title="怎么样正确使用动物疫苗视频（动物疫苗的使用方法及注意事项）">怎么样正确使用动物疫苗视频（动物疫苗的使用方法及注意事项）</a></li>
-                        <li class="py-2"><a href="/news/article-35011.htm" title="领养宠物协议书范本图片模板高清（领养宠物协议有法律效力吗）">领养宠物协议书范本图片模板高清（领养宠物协议有法律效力吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-high-speed-nodes.htm" title="11月25日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月25日 - 最高速度19.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37355.htm" title="华畜兽药是正规公司吗兽用林可（华畜兽药是哪个公司的）">华畜兽药是正规公司吗兽用林可（华畜兽药是哪个公司的）</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-12-23-free-subscribe-node.htm" title="12月23日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址">12月23日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-high-speed-nodes.htm" title="12月20日 - 最高速度20.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月20日 - 最高速度20.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22296.htm" title="全国动物疫苗生产厂家排名前十名 全国动物疫苗生产厂家排名前十名有哪些">全国动物疫苗生产厂家排名前十名 全国动物疫苗生产厂家排名前十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-49742.htm" title="天津猫咪免费领养（天津猫咪领养中心）">天津猫咪免费领养（天津猫咪领养中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-clash-nyanpasu.htm" title="12月24日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址">12月24日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-41800.htm" title="卖宠物粮的店名 卖宠物粮的店名怎么取">卖宠物粮的店名 卖宠物粮的店名怎么取</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-23-linux-clash-nyanpasu.htm" title="1月23日 - 最高速度18.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月23日 - 最高速度18.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-33043.htm" title="猫咪三针疫苗多久打一次好（猫咪三针疫苗需要多久）">猫咪三针疫苗多久打一次好（猫咪三针疫苗需要多久）</a></li>
+                        <li class="py-2"><a href="/news/article-24605.htm" title="Celery ETA任务重复提交的问题解决">Celery ETA任务重复提交的问题解决</a></li>
                     </ul>
     </div>
 </div>
@@ -173,16 +201,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-34486.htm" />
     <title>ASP.NET Core 6.0 添加 JWT 认证和授权</title>
         <meta name="description" content="1 前言 1.1 本文介绍 本文将分别简单介绍 Authentication（认证） 和 Authorization（授权）。 并以简单的例子在 ASP.NET Core 6.0 的 WebAPI 中" />
         <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-34486.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="ASP.NET Core 6.0 添加 JWT 认证和授权" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/5c2cf3a5a3d645d387a258da2f55333b.webp" />
+        <meta property="og:release_date" content="2025-01-02T09:58:38" />
+    <meta property="og:updated_time" content="2025-01-02T09:58:38" />
+        <meta property="og:description" content="1 前言 1.1 本文介绍 本文将分别简单介绍 Authentication（认证） 和 Authorization（授权）。 并以简单的例子在 ASP.NET Core 6.0 的 WebAPI 中" />
+        
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ASP.NET Core 6.0 添加 JWT 认证和授权">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- Favicon Icon -->
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
@@ -152,16 +180,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-22-clash-nyanpasu.htm" title="12月22日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址">12月22日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-24-clash-nyanpasu-node.htm" title="10月24日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月24日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19548.htm" title="动物医院申请条件有哪些要求和流程呢图片（动物医院申请条件有哪些要求和流程呢图片大全）">动物医院申请条件有哪些要求和流程呢图片（动物医院申请条件有哪些要求和流程呢图片大全）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-10-clash-nyanpasu-node.htm" title="12月10日 - 最高速度19.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月10日 - 最高速度19.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-high-speed-nodes.htm" title="12月5日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月5日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-clash-nyanpasu.htm" title="11月10日 - 最高速度18.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月10日 - 最高速度18.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-34485.htm" title="vue-cli4.5.13按需引入vant，解决vant样式失效问题">vue-cli4.5.13按需引入vant，解决vant样式失效问题</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-8-clash-nyanpasu.htm" title="10月8日 - 最高速度20.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月8日 - 最高速度20.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-13-clash-nyanpasu.htm" title="10月13日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月13日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20463.htm" title="重庆宠物领养贴吧论坛官网（重庆宠物领养重庆宠物赠送）">重庆宠物领养贴吧论坛官网（重庆宠物领养重庆宠物赠送）</a></li>
+                        <li class="py-2"><a href="/news/article-49232.htm" title="女人养猫咪好吗（女人养猫咪好吗知乎）">女人养猫咪好吗（女人养猫咪好吗知乎）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-23-linux-clash-nyanpasu.htm" title="1月23日 - 最高速度18.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月23日 - 最高速度18.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-clash-nyanpasu-node.htm" title="12月4日 - 最高速度22.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月4日 - 最高速度22.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe.htm" title="11月13日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月13日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-clash-nyanpasu.htm" title="12月9日 - 最高速度21.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月9日 - 最高速度21.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-47735.htm" title="宠物狗粮网店名字怎么取（宠物狗粮网店名字怎么取的）">宠物狗粮网店名字怎么取（宠物狗粮网店名字怎么取的）</a></li>
+                        <li class="py-2"><a href="/news/article-33043.htm" title="猫咪三针疫苗多久打一次好（猫咪三针疫苗需要多久）">猫咪三针疫苗多久打一次好（猫咪三针疫苗需要多久）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-node-share-links.htm" title="11月6日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月6日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44785.htm" title="ES的searchAfter使用详解">ES的searchAfter使用详解</a></li>
+                        <li class="py-2"><a href="/news/article-28321.htm" title="【Python开发】2. 变量、基本数据类型及其转换">【Python开发】2. 变量、基本数据类型及其转换</a></li>
                     </ul>
     </div>
 </div>
@@ -173,16 +201,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

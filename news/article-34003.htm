@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-34003.htm" />
     <title>1-vuejs2.0实战：仿豆瓣app项目，创建自定义组件tabbar</title>
         <meta name="description" content="大家好，我给大家分享一下仿豆瓣app的教程。当然了，我们不是用原生去实现，而是用前端框架vuejs来实现豆瓣app。————第一次写文章，写得不好请见谅。  为什么我们选择豆瓣app 来做这样一个教程" />
         <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-34003.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="1-vuejs2.0实战：仿豆瓣app项目，创建自定义组件tabbar" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/b852afab44edab0b0cc77ae376ae066b.webp" />
+        <meta property="og:release_date" content="2025-01-01T06:39:01" />
+    <meta property="og:updated_time" content="2025-01-01T06:39:01" />
+        <meta property="og:description" content="大家好，我给大家分享一下仿豆瓣app的教程。当然了，我们不是用原生去实现，而是用前端框架vuejs来实现豆瓣app。————第一次写文章，写得不好请见谅。  为什么我们选择豆瓣app 来做这样一个教程" />
+        
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="1-vuejs2.0实战：仿豆瓣app项目，创建自定义组件tabbar">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- Favicon Icon -->
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
@@ -152,16 +180,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-25069.htm" title="Pytorch Conv1d()">Pytorch Conv1d()</a></li>
-                        <li class="py-2"><a href="/news/article-30661.htm" title="动物医院贵吗多少钱一个 动物医院贵吗多少钱一个月">动物医院贵吗多少钱一个 动物医院贵吗多少钱一个月</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-7-free-node-subscribe.htm" title="8月7日 - 最高速度20.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月7日 - 最高速度20.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-28-clash-nyanpasu-node.htm" title="11月28日 - 最高速度18.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月28日 - 最高速度18.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-7-linux-clash-nyanpasu.htm" title="9月7日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月7日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-16-clash-nyanpasu.htm" title="10月16日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月16日 - 最高速度21.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20464.htm" title="动物灭活疫苗过期处理（疫苗过期了给动物打上会死吗）">动物灭活疫苗过期处理（疫苗过期了给动物打上会死吗）</a></li>
-                        <li class="py-2"><a href="/news/article-20922.htm" title="feign.sentinel.enabled=true 启动报错">feign.sentinel.enabled=true 启动报错</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-1-clash-nyanpasu.htm" title="11月1日 - 最高速度20.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月1日 - 最高速度20.4M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-subscribe-node.htm" title="10月19日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月19日 - 最高速度22.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-clash-nyanpasu.htm" title="2月1日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">2月1日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-20004.htm" title="Android 弹窗设计规范">Android 弹窗设计规范</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-linux-clash-nyanpasu.htm" title="1月17日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月17日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-36032.htm" title="nginx+tomcat负载均衡集群">nginx+tomcat负载均衡集群</a></li>
+                        <li class="py-2"><a href="/news/article-46266.htm" title="liunx中搭建python3.7环境和安装pycharm并搭建Django">liunx中搭建python3.7环境和安装pycharm并搭建Django</a></li>
+                        <li class="py-2"><a href="/news/article-29719.htm" title="R语言学习笔记之lm函数">R语言学习笔记之lm函数</a></li>
+                        <li class="py-2"><a href="/news/article-20005.htm" title="动物接种疫苗多少钱一针啊图片及价格（动物疫苗一般多少钱）">动物接种疫苗多少钱一针啊图片及价格（动物疫苗一般多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-clash-nyanpasu.htm" title="11月7日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月7日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-49743.htm" title="开动物医院什么资质最好 开动物医院什么资质最好呢">开动物医院什么资质最好 开动物医院什么资质最好呢</a></li>
+                        <li class="py-2"><a href="/news/article-35524.htm" title="宠物医院投诉电话号码（宠物医院投诉电话号码是多少）">宠物医院投诉电话号码（宠物医院投诉电话号码是多少）</a></li>
                     </ul>
     </div>
 </div>
@@ -173,25 +201,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

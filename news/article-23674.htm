@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-23674.htm" />
     <title>Python中将字典转为成员变量详解</title>
         <meta name="description" content="当我们在Python中写一个class时，如果有一部分的成员变量需要用一个字典来命名和赋值，此时应该如何操作呢？这个场景最常见于从一个文件（比如json、npz之类的文件）中读取字典变量到内存当中，再" />
         <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-23674.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="Python中将字典转为成员变量详解" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/8e59e1519388f2aa6ecb630ce530a112.webp" />
+        <meta property="og:release_date" content="2024-12-10T09:59:20" />
+    <meta property="og:updated_time" content="2024-12-10T09:59:20" />
+        <meta property="og:description" content="当我们在Python中写一个class时，如果有一部分的成员变量需要用一个字典来命名和赋值，此时应该如何操作呢？这个场景最常见于从一个文件（比如json、npz之类的文件）中读取字典变量到内存当中，再" />
+        
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python中将字典转为成员变量详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- Favicon Icon -->
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
@@ -152,16 +180,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-10-clash-nyanpasu.htm" title="9月10日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">9月10日 - 最高速度20.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe.htm" title="11月20日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月20日 - 最高速度20.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-2-free-clash-nyanpasu.htm" title="8月2日 - 最高速度18.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月2日 - 最高速度18.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-31624.htm" title="宠物领养市场前景分析（宠物领养价格）">宠物领养市场前景分析（宠物领养价格）</a></li>
-                        <li class="py-2"><a href="/news/article-28776.htm" title="加工狗粮机器设备厂家（加工狗粮设备多少钱）">加工狗粮机器设备厂家（加工狗粮设备多少钱）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-11-free-high-speed-nodes.htm" title="10月11日 - 最高速度18.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月11日 - 最高速度18.1M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-30190.htm" title="重庆在哪里领养猫咪狗狗（重庆哪里可以领养猫猫）">重庆在哪里领养猫咪狗狗（重庆哪里可以领养猫猫）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-20-clash-nyanpasu-node.htm" title="8月20日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">8月20日 - 最高速度19.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20463.htm" title="重庆宠物领养贴吧论坛官网（重庆宠物领养重庆宠物赠送）">重庆宠物领养贴吧论坛官网（重庆宠物领养重庆宠物赠送）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe.htm" title="11月13日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月13日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-clash-nyanpasu-node.htm" title="11月29日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月29日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-clash-nyanpasu.htm" title="12月27日 - 最高速度18.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址">12月27日 - 最高速度18.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-27857.htm" title="领养狗需要房产证（领养狗需要房产证吗）">领养狗需要房产证（领养狗需要房产证吗）</a></li>
+                        <li class="py-2"><a href="/news/article-45784.htm" title="宠物批发货源在哪里找啊多少钱（宠物批发货源在哪里找啊多少钱一个）">宠物批发货源在哪里找啊多少钱（宠物批发货源在哪里找啊多少钱一个）</a></li>
+                        <li class="py-2"><a href="/news/article-26455.htm" title="怎么样正确使用动物疫苗视频（动物疫苗的使用方法及注意事项）">怎么样正确使用动物疫苗视频（动物疫苗的使用方法及注意事项）</a></li>
+                        <li class="py-2"><a href="/news/article-38339.htm" title="养猫被抓伤很普遍吗都要***吗（养猫被抓伤很普遍吗都要***吗视频）">养猫被抓伤很普遍吗都要***吗（养猫被抓伤很普遍吗都要***吗视频）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-clash-nyanpasu.htm" title="12月22日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址">12月22日 - 最高速度18.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-25525.htm" title="泉州宠物狗批发市场在哪里（泉州哪里有宠物批发市场）">泉州宠物狗批发市场在哪里（泉州哪里有宠物批发市场）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-clash-nyanpasu.htm" title="11月16日 - 最高速度18M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月16日 - 最高速度18M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-free-subscribe-node.htm" title="12月23日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址">12月23日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
                     </ul>
     </div>
 </div>
@@ -173,25 +201,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

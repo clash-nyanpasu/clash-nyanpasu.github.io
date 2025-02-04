@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-20921.htm" />
     <title>将时间戳值增加微秒以将其转换为整数，MySQL将返回什么？</title>
         <meta name="description" content="借助UNIX_TIMESTAMP()函数，可以将timestamp的值转换为秒数。MySQL将忽略添加到timestamp值中的微秒，因为UNIX_TIMESTAMP的值只有10位数字。 示例 mys" />
         <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-20921.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="将时间戳值增加微秒以将其转换为整数，MySQL将返回什么？" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/86ac4c550549e47040f3d82f5b82f2ca.webp" />
+        <meta property="og:release_date" content="2024-12-04T08:42:03" />
+    <meta property="og:updated_time" content="2024-12-04T08:42:03" />
+        <meta property="og:description" content="借助UNIX_TIMESTAMP()函数，可以将timestamp的值转换为秒数。MySQL将忽略添加到timestamp值中的微秒，因为UNIX_TIMESTAMP的值只有10位数字。 示例 mys" />
+        
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="将时间戳值增加微秒以将其转换为整数，MySQL将返回什么？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- Favicon Icon -->
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
@@ -152,16 +180,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-17-clash-nyanpasu.htm" title="12月17日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月17日 - 最高速度21M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-34003.htm" title="1-vuejs2.0实战：仿豆瓣app项目，创建自定义组件tabbar">1-vuejs2.0实战：仿豆瓣app项目，创建自定义组件tabbar</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-node-share.htm" title="10月29日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月29日 - 最高速度21.3M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-high-speed-nodes.htm" title="10月18日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月18日 - 最高速度18.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-9-clash-nyanpasu.htm" title="12月9日 - 最高速度21.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月9日 - 最高速度21.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-25069.htm" title="Pytorch Conv1d()">Pytorch Conv1d()</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-high-speed-nodes.htm" title="11月9日 - 最高速度19.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月9日 - 最高速度19.7M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19091.htm" title="动物防疫站打疫苗通知怎么写 动物防疫站打疫苗通知怎么写啊">动物防疫站打疫苗通知怎么写 动物防疫站打疫苗通知怎么写啊</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-9-clash-nyanpasu.htm" title="10月9日 - 最高速度19.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">10月9日 - 最高速度19.2M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-22750.htm" title="SpringBoot-2-3-x分层构建Docker镜像实践，docker教程学习">SpringBoot-2-3-x分层构建Docker镜像实践，docker教程学习</a></li>
+                        <li class="py-2"><a href="/news/article-29243.htm" title="梦见抱着别人的女孩是什么意思（梦见自己抱着别人的女孩子）">梦见抱着别人的女孩是什么意思（梦见自己抱着别人的女孩子）</a></li>
+                        <li class="py-2"><a href="/news/article-46761.htm" title="中国兽药公司前十名（中国十强兽药公司）">中国兽药公司前十名（中国十强兽药公司）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-node-subscribe.htm" title="1月15日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月15日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-node-subscribe-links.htm" title="12月2日 - 最高速度21.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月2日 - 最高速度21.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-23-linux-clash-nyanpasu.htm" title="1月23日 - 最高速度18.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月23日 - 最高速度18.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe-links.htm" title="1月22日 - 最高速度19.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月22日 - 最高速度19.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-44786.htm" title="动物疫苗储存温度是多少（动物疫苗未冷藏几小时失效）">动物疫苗储存温度是多少（动物疫苗未冷藏几小时失效）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-clash-nyanpasu.htm" title="12月24日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址">12月24日 - 最高速度22.8M/S，2024年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-high-speed-nodes.htm" title="11月26日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月26日 - 最高速度21.5M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-48213.htm" title="宠物店粮食一个月要多少吨呢 宠物店粮食一个月要多少吨呢">宠物店粮食一个月要多少吨呢 宠物店粮食一个月要多少吨呢</a></li>
                     </ul>
     </div>
 </div>
@@ -173,25 +201,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

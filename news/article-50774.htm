@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-50774.htm" />
+    <title>flink内存模型详解与案例</title>
+        <meta name="description" content="任务提交时的一些yarn设置（通用客户端模式） 指定并行度&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &" />
+        <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-50774.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="flink内存模型详解与案例" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/5c2cf3a5a3d645d387a258da2f55333b.webp" />
+        <meta property="og:release_date" content="2025-02-04T00:12:58" />
+    <meta property="og:updated_time" content="2025-02-04T00:12:58" />
+        <meta property="og:description" content="任务提交时的一些yarn设置（通用客户端模式） 指定并行度&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &" />
+        
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="flink内存模型详解与案例">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Favicon Icon -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/plugin_theme_css.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/responsive.css">
+    <!-- modernizr js -->
+    <script src="/assets/website/js/frontend/clash_nyanpasu/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY15Z3XB3H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PY15Z3XB3H');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="em40_header_area_main">
+        <div class="tx_top2_relative">
+            <div class="all_header_abs">
+                <div class="techsold-main-menu one_page menu4 heading_style_4 witr_h_h6">
+                    <div class="techsold_nav_area transprent-menu scroll_fixed bdbar">
+                        <div class="container">
+                            <div class="row logo-left">
+                                <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                    <div class="logo">
+                                                                                <a href="/">
+                                            Clash Nyanpasu                                        </a>
+                                                                            </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12">
+                                    <nav class="techsold_menu">
+                                        <ul class="sub-menu">
+                                                                                        <li><a href="/">首页</a></li>
+                                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                                        <li><a href="#">关于</a></li>
+                                            <li><a href="#">联系</a></li>
+                                        </ul>
+                                    </nav>
+                                    <!-- MAIN MENU -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="mobile_logo_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mobilemenu_con">
+                        <div class="mobile_menu_logo text-center">
+                                                        <a href="/">
+                                Clash Nyanpasu
+                            </a>
+                                                    </div>
+                        <div class="mobile_menu_option">
+                            <div class="mobile_menu_o mobile_opicon">
+                                <i class="icofont-navigation-menu openclass"></i>
+                            </div>
+                            <div class="mobile_menu_inner mobile_p">
+                                <div class="mobile_menu_content">
+                                    <div class="mobile_menu_logo text-center">
+                                                                                <a href="/">
+                                            Clash Nyanpasu
+                                        </a>
+                                                                            </div>
+                                    <div class="menu_area mobile-menu">
+                                        <nav class="techsold_menu">
+                                            <ul class="sub-menu">
+                                                                                                <li><a href="/">首页</a></li>
+                                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                                <li><a href="#">关于</a></li>
+                                                <li><a href="#">联系</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="mobile_menu_o mobile_cicon">
+                                        <i class="icofont-close closeclass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobile_overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mobile Menu -->
+    <!-- breadcumb area -->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 txtc  text-center ccase">
+                    <div class="brpt brptsize">
+                        <h1 class="brcrumb_title">flink内存模型详解与案例</h1>
+                    </div>
+                    <div class="breadcumb-inner">
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcumb area -->
+    <!-- about area -->
+    <div class="ts_about_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>任务提交时的一些yarn设置（通用客户端模式）</p> <p>指定并行度&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -p 5 \</p> <p>指定yarn队列&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-Dyarn.application.queue=xxx \</p> <p>指定JM总进程的大小&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;-Djobmanager.memory.process.size=1024mb \</p> <p>指定每个TM的总进程大小，一般是 2-8g，yarn默认最大给8g&nbsp; &nbsp; -Dtaskmanager.memory.process.size=1024mb \</p> <p>指定每个TM的slot数&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-Dtaskmanager.numberOfTaskSlots=2 \</p> <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p> <p>flink 内存模型如下图：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/dd6d8144a1cc224c16f2d9337a136635.jpg" alt="flink内存模型详解与案例"></p> <p>&nbsp;1.flink框架内存使用了堆上内存和堆外内存，不计入slot资源</p> <p>2、task执行的内存使用了堆上内存和堆外内存</p> <p>3、网络缓冲内存：网络数据交换所使用的堆外内存大小，如网络数据交换缓冲区</p> <p>4、框架堆外内存、task堆外内存、网络缓冲内存，都在堆外的直接内存里。</p> <p>5、管理内存：flink管理的堆外内存。用于管理排序、哈希表、缓存中间结果及<strong>RocksDB State Backend</strong> 的本地内存</p> <p>6、jvm特有内存：jvm本身占用的内存，包括元空间和执行开销</p> <p>7、flink使用内存=框架堆内和堆外内+Task堆内和堆外内存+网络缓冲内存+管理内存</p> <p>8、进程内存=Flink内存+jvm特有内存</p> <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p> <p><span style="font-size: 18pt"><em><span style="text-decoration: underline"><strong>内存模型详解:</strong></span></em></span></p> <p><em><strong>jvm特定内存：jvm本身使用的内存，包含jvm的metaspace和over-head</strong></em></p> <p><span>①JVM metaspace：jvm元空间</span></p> <p><span>taskmanager.memory.jvm-metaspace.size 默认256mb</span></p> <p><span>②JVM over-head执行开销：JVM执行时自身所需要的内容，包括线程堆栈、IO、编译缓存等所使用的内存。</span></p> <p><span>taskmanager.memory.jvm-overhead.fraction, 默认0.1</span></p> <p><span>taskmanager.memory.jvm-overhead.min,&nbsp; &nbsp; &nbsp; 默认192mb</span></p> <p><span>taskmanager.memory.jvm-overhead.max,&nbsp; &nbsp; &nbsp;默认1gb</span></p> <p>总进程内存*fraction，如果小于配置的min或大于配置的max，则使用min/max</p> <p><em><strong>框架内存：flink框架，即TaskManager本身所占用的内存，不计入slot的资源中。</strong></em></p> <p>堆内：taskmanager.memory.framework.heap.size, 默认128mb</p> <p>堆外：taskmanager.memory.framework.off-heap.size,默认128mb</p> <p><em><strong>Task内存：Task执行用户代码时所使用的内存</strong></em></p> <p>堆内：taskmanager.memory.task.heap.size,默认none，由flinl内存口扣除掉其他部分的内存得到、</p> <p>堆外：taskmanager.memory.task.off-size,默认0，表示不使用堆外内存</p> <p><strong><em>网络内存：网络数据交换所使用的堆外内存大小，如网络数据交换缓冲区</em></strong></p> <p>堆外：taskmanager.memory.network.fraction,默认0.1</p> <p>　　　taskmanager.memory.network,min,默认64mb</p> <p>　　　taskmanager.memory.network.max,默认1gb</p> <p>flink内存*fraction，如果小于配置的min或大于配置的max，则使用min/max</p> <p><strong><em>管理内存：用于RocksDB State Backend 的本地内存和批的排序、哈希表、缓存中间结果。</em></strong></p> <p>堆外：taskmanager.memory.managed.fraction,默认0.4</p> <p>　　　taskmanager.memory.managed.size,默认none</p> <p>如果size没指定，则等于flink内存*fraction</p> <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p> <p><span style="font-size: 18pt"><em><strong>实际案例</strong></em></span></p> <p>基于yarn模式，一般参数指定的是总进程内存，taskmanager.memory.process.size,</p> <p>如果该大小为4G，每一块内存得到大小如下：</p> <p>①计算flink内存</p> <p>jvm元空间256m</p> <p>jvm执行开销：4g*0.1=409.6，在[192.1g]之间，最终结果409.6m</p> <p>flink内存=4g-256m-409.6m=3430.4m</p> <p>②网络内存=3430.4*0.1=343.04，在[64m,1g]之间，最终结果343.04m</p> <p>③托管内存=3430.4m*0.4=1372.16m</p> <p>④框架内存，堆内和堆外都是128m</p> <p>⑤Task堆内内存=3430.4m-128m-128m-343.04m-1372.16m=1459.2m<strong>堆内内存是总内存减去所有其他的内存。在总大小不变的情况小想调大堆内内存，就把其他内存调小。</strong></p> <p>&nbsp;------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p> <p><span style="font-size: 18pt"><em><strong>提交程序，查看flink ui结果。和计算的几乎一致</strong></em></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/37a14e81e9f9891037c31fb78ef1bde2.jpg" alt="flink内存模型详解与案例"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/b7bee45ec16c972866c5b795a7699ddf.jpg" alt="flink内存模型详解与案例"></p> <p>&nbsp;------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p> <p><em><strong><span style="font-size: 18pt">JVM参数与内存</span></strong></em></p> <p>jvm Options：</p> <p>-Xmx1664299798</p> <p>-Xms1664299798&nbsp; &nbsp; &nbsp;jvm堆内内存大小(最大与最小)&nbsp; 约1587m=Task堆内+框架堆内</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/67afd62750ed52d247445a8278ee81f3.jpg" alt="flink内存模型详解与案例"></p> <p>&nbsp;-XX:MaxDirectMemorySize=493921243 jvm堆外内存大小&nbsp; &nbsp; 约471m=Task堆外+框架堆外+网络内存</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/29e9fee0f21d2c5ce48fe09439402b72.jpg" alt="flink内存模型详解与案例"></p> <p>-XX:MaxMetaspaceSize=268435456&nbsp; &nbsp;jvm元空间大小，约256m</p> <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p> <p><span style="font-size: 18pt"><em><strong>调优原则，根据程序运行时每块内存的使用情况来调整。</strong></em></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e645b3cbd41b5bc22ca5df5b0d5349c1.jpg" alt="flink内存模型详解与案例"></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-50252.htm">宠物店猫咪疫苗打几针（宠物店猫咪疫苗多少钱一针）</a></p>
+                                        <p>下一个：<a href="/news/article-50775.htm">猫喜欢靠近有灵气的人（猫喜欢靠近有灵气的人的寓意）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-43790.htm" title="uni-app 怎么修改自定义组件样式 uniapp 覆盖 组件样式">uni-app 怎么修改自定义组件样式 uniapp 覆盖 组件样式</a></li>
+                        <li class="py-2"><a href="/news/article-49743.htm" title="开动物医院什么资质最好 开动物医院什么资质最好呢">开动物医院什么资质最好 开动物医院什么资质最好呢</a></li>
+                        <li class="py-2"><a href="/news/article-31625.htm" title="打过疫苗的猫抓伤了轻微出血要打疫苗吗多少钱（打了疫苗猫抓了一下出了点血要打疫苗吗?）">打过疫苗的猫抓伤了轻微出血要打疫苗吗多少钱（打了疫苗猫抓了一下出了点血要打疫苗吗?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-free-clash-nyanpasu.htm" title="2月3日 - 最高速度20.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">2月3日 - 最高速度20.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-linux-clash-nyanpasu.htm" title="1月17日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月17日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-50251.htm" title="我所在的城市里有一家宠物医院的英文怎么写（在我的城市里有一家宠物医院的英语）">我所在的城市里有一家宠物医院的英文怎么写（在我的城市里有一家宠物医院的英语）</a></li>
+                        <li class="py-2"><a href="/news/article-40818.htm" title="南京宠物领养吧百度贴吧（南京最大的宠物店免费领养）">南京宠物领养吧百度贴吧（南京最大的宠物店免费领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-clash-nyanpasu.htm" title="11月27日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月27日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28776.htm" title="加工狗粮机器设备厂家（加工狗粮设备多少钱）">加工狗粮机器设备厂家（加工狗粮设备多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-50252.htm" title="宠物店猫咪疫苗打几针（宠物店猫咪疫苗多少钱一针）">宠物店猫咪疫苗打几针（宠物店猫咪疫苗多少钱一针）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer area -->
+<div class="witrfm_area">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 footer_style_1">
+                    <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p>
+                            Clash Nyanpasu官方节点站 版权所有
+                            <br />
+                            Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include All JS -->
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery-3.5.1.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/bootstrap.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/slick.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/venobox.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.appear.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.knob.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme-pluginjs.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.meanmenu.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/ajax-mail.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
