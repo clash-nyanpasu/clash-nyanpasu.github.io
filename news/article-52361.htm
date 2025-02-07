@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-52361.htm" />
+    <title>欧拉定理的C ++程序</title>
+        <meta name="description" content="这是一个C ++程序，它演示了Euler定理的实现。数字和模数必须是互质的，才能存在模数乘法逆。 算法 Begin &nbsp;&nbsp;&nbsp;Take&nbsp;input&nbsp;to&" />
+        <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-52361.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="欧拉定理的C ++程序" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/cf47c2cc29ff801abb58b6fe1043933e.webp" />
+        <meta property="og:release_date" content="2025-02-07T07:17:57" />
+    <meta property="og:updated_time" content="2025-02-07T07:17:57" />
+        <meta property="og:description" content="这是一个C ++程序，它演示了Euler定理的实现。数字和模数必须是互质的，才能存在模数乘法逆。 算法 Begin &nbsp;&nbsp;&nbsp;Take&nbsp;input&nbsp;to&" />
+        
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="欧拉定理的C ++程序">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Favicon Icon -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/plugin_theme_css.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/responsive.css">
+    <!-- modernizr js -->
+    <script src="/assets/website/js/frontend/clash_nyanpasu/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY15Z3XB3H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PY15Z3XB3H');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="em40_header_area_main">
+        <div class="tx_top2_relative">
+            <div class="all_header_abs">
+                <div class="techsold-main-menu one_page menu4 heading_style_4 witr_h_h6">
+                    <div class="techsold_nav_area transprent-menu scroll_fixed bdbar">
+                        <div class="container">
+                            <div class="row logo-left">
+                                <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                    <div class="logo">
+                                                                                <a href="/">
+                                            Clash Nyanpasu                                        </a>
+                                                                            </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12">
+                                    <nav class="techsold_menu">
+                                        <ul class="sub-menu">
+                                                                                        <li><a href="/">首页</a></li>
+                                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                                        <li><a href="#">关于</a></li>
+                                            <li><a href="#">联系</a></li>
+                                        </ul>
+                                    </nav>
+                                    <!-- MAIN MENU -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="mobile_logo_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mobilemenu_con">
+                        <div class="mobile_menu_logo text-center">
+                                                        <a href="/">
+                                Clash Nyanpasu
+                            </a>
+                                                    </div>
+                        <div class="mobile_menu_option">
+                            <div class="mobile_menu_o mobile_opicon">
+                                <i class="icofont-navigation-menu openclass"></i>
+                            </div>
+                            <div class="mobile_menu_inner mobile_p">
+                                <div class="mobile_menu_content">
+                                    <div class="mobile_menu_logo text-center">
+                                                                                <a href="/">
+                                            Clash Nyanpasu
+                                        </a>
+                                                                            </div>
+                                    <div class="menu_area mobile-menu">
+                                        <nav class="techsold_menu">
+                                            <ul class="sub-menu">
+                                                                                                <li><a href="/">首页</a></li>
+                                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                                <li><a href="#">关于</a></li>
+                                                <li><a href="#">联系</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="mobile_menu_o mobile_cicon">
+                                        <i class="icofont-close closeclass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobile_overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mobile Menu -->
+    <!-- breadcumb area -->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 txtc  text-center ccase">
+                    <div class="brpt brptsize">
+                        <h1 class="brcrumb_title">欧拉定理的C ++程序</h1>
+                    </div>
+                    <div class="breadcumb-inner">
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcumb area -->
+    <!-- about area -->
+    <div class="ts_about_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>这是一个C ++程序，它演示了Euler定理的实现。数字和模数必须是互质的，才能存在模数乘法逆。</p> <h2>算法</h2> <pre>Begin &nbsp;&nbsp;&nbsp;Take&nbsp;input&nbsp;to&nbsp;find&nbsp;modular&nbsp;multiplicative&nbsp;inverse &nbsp;&nbsp;&nbsp;Take&nbsp;input&nbsp;as&nbsp;modular&nbsp;value &nbsp;&nbsp;&nbsp;Perform&nbsp;inverse&nbsp;array&nbsp;function: &nbsp;&nbsp;&nbsp;modInverse(x&nbsp;+&nbsp;1,&nbsp;0); &nbsp;&nbsp;&nbsp;modInverse[1]&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;=&nbsp;2&nbsp;to&nbsp;x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modInverse[i]&nbsp;=&nbsp;(-(y&nbsp;/&nbsp;i)&nbsp;*&nbsp;modInverse[y&nbsp;mod&nbsp;i])&nbsp;mod&nbsp;y&nbsp;+&nbsp;y &nbsp;&nbsp;&nbsp;return&nbsp;modInverse End</pre> <h2>范例程式码</h2> <pre>#include&nbsp;&lt;iostream&gt; #include&nbsp;&lt;vector&gt; using&nbsp;namespace&nbsp;std; vector&lt;int&gt;&nbsp;inverseArray(int&nbsp;x,&nbsp;int&nbsp;y)&nbsp;{ &nbsp;&nbsp;&nbsp;vector&lt;int&gt;&nbsp;modInverse(x&nbsp;+&nbsp;1,&nbsp;0); &nbsp;&nbsp;&nbsp;modInverse[1]&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;2;&nbsp;i&nbsp;&lt;=&nbsp;x;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modInverse[i]&nbsp;=&nbsp;(-(y&nbsp;/&nbsp;i)&nbsp;*&nbsp;modInverse[y&nbsp;%&nbsp;i])&nbsp;%&nbsp;y&nbsp;+&nbsp;y; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;modInverse; } int&nbsp;main()&nbsp;{ &nbsp;&nbsp;&nbsp;vector&lt;int&gt;::iterator&nbsp;it; &nbsp;&nbsp;&nbsp;int&nbsp;a,&nbsp;m; &nbsp;&nbsp;&nbsp;cout&lt;&lt;"Enter&nbsp;number&nbsp;to&nbsp;find&nbsp;modular&nbsp;multiplicative&nbsp;inverse:&nbsp;"; &nbsp;&nbsp;&nbsp;cin&gt;&gt;a; &nbsp;&nbsp;&nbsp;cout&lt;&lt;"Enter&nbsp;Modular&nbsp;Value:&nbsp;"; &nbsp;&nbsp;&nbsp;cin&gt;&gt;m; &nbsp;&nbsp;&nbsp;cout&lt;&lt;inverseArray(a,&nbsp;m)[a]&lt;&lt;endl; }</pre> <p>输出结果</p> <pre>Enter&nbsp;number&nbsp;to&nbsp;find&nbsp;modular&nbsp;multiplicative&nbsp;inverse:&nbsp;26 Enter&nbsp;Modular&nbsp;Value:&nbsp;7 7</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-51831.htm">猫咪驱虫一般多少钱一支猫粮啊（猫猫驱虫多少钱?）</a></p>
+                                        <p>下一个：<a href="/news/article-52362.htm">springMVC中的@RequestMapping注解</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-25987.htm" title="宠物疫苗编号是一样的吗（宠物疫苗批号查询系统）">宠物疫苗编号是一样的吗（宠物疫苗批号查询系统）</a></li>
+                        <li class="py-2"><a href="/news/article-51831.htm" title="猫咪驱虫一般多少钱一支猫粮啊（猫猫驱虫多少钱?）">猫咪驱虫一般多少钱一支猫粮啊（猫猫驱虫多少钱?）</a></li>
+                        <li class="py-2"><a href="/news/article-25986.htm" title="动物疫苗的使用注意事项有哪些呢（动物疫苗接种注意问题）">动物疫苗的使用注意事项有哪些呢（动物疫苗接种注意问题）</a></li>
+                        <li class="py-2"><a href="/news/article-40314.htm" title="动物防疫疫苗种类有哪些类型（动物疫苗法最新消息2019）">动物防疫疫苗种类有哪些类型（动物疫苗法最新消息2019）</a></li>
+                        <li class="py-2"><a href="/news/article-42295.htm" title="宠物疫苗可以自己打吗现在多少钱（宠物疫苗可以自己打嘛）">宠物疫苗可以自己打吗现在多少钱（宠物疫苗可以自己打嘛）</a></li>
+                        <li class="py-2"><a href="/news/article-24142.htm" title="猫德任务（tbc猫德需要精准吗）">猫德任务（tbc猫德需要精准吗）</a></li>
+                        <li class="py-2"><a href="/news/article-39328.htm" title="长沙宠物猫领养中心在哪里 长沙宠物猫领养中心在哪里啊">长沙宠物猫领养中心在哪里 长沙宠物猫领养中心在哪里啊</a></li>
+                        <li class="py-2"><a href="/news/article-23674.htm" title="Python中将字典转为成员变量详解">Python中将字典转为成员变量详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-high-speed-nodes.htm" title="12月5日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">12月5日 - 最高速度21.9M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-42296.htm" title="动物疫苗在哪里买比较好一点（动物疫苗在哪里购买）">动物疫苗在哪里买比较好一点（动物疫苗在哪里购买）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer area -->
+<div class="witrfm_area">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 footer_style_1">
+                    <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p>
+                            Clash Nyanpasu官方节点站 版权所有
+                            <br />
+                            Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include All JS -->
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery-3.5.1.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/bootstrap.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/slick.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/venobox.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.appear.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.knob.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme-pluginjs.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.meanmenu.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/ajax-mail.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
