@@ -167,6 +167,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> <p>一、新建项目Demo2</p> <p><img fetchpriority="high" decoding="async" alt="" height="578" src="http://img.555519.xyz/uploads3/20220819/1f85552f3af8794b3d6506f53d489494.jpg"></p> <p>二、安装 参考文献：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://router.vuejs.org/installation.html#direct-download-cdn"  title="Installation | Vue Router" rel="nofollow">Installation | Vue Router</a></p> <pre><code>npm install vue-router@4</code></pre> <p>三、新建目录及页面</p> <p>/products/index.vue</p> <pre><code class="language-html">&lt;template&gt; 	&lt;h1&gt;产品管理&lt;/h1&gt; &lt;/template&gt; &lt;script setup&gt; &lt;/script&gt; &lt;style&gt; &lt;/style&gt;</code></pre> <p>/merchands/index.vue</p> <pre><code class="language-html">&lt;template&gt; 	&lt;h1&gt;商品管理&lt;/h1&gt; &lt;/template&gt;  &lt;script&gt; &lt;/script&gt;  &lt;style&gt; &lt;/style&gt;</code></pre> <p>四、修改</p> <p>index.html</p> <pre><code class="language-html">&lt;!DOCTYPE html&gt; &lt;html lang="en"&gt;   &lt;head&gt;     &lt;meta charset="UTF-8" /&gt;     &lt;link  href="/favicon.ico" /&gt;     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;     &lt;title&gt;Vite App&lt;/title&gt; 	&lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;   &lt;/head&gt;   &lt;body&gt;     &lt;div id="app"&gt; 	&lt;/div&gt;   &lt;/body&gt; &lt;/html&gt;</code></pre> <p>App.vue</p> <pre><code class="language-html">&lt;script setup&gt; &lt;/script&gt;  &lt;template&gt;   &lt;img alt="Vue logo" src="./assets/logo.png" alt="vue3-VueRouter使用" /&gt;   &lt;p&gt;      &lt;router-link to="/"&gt;P&lt;/router-link&gt;      &lt;router-link to="/m" style="margin-left: 20px;"&gt;M&lt;/router-link&gt;    &lt;/p&gt;    &lt;router-view&gt;&lt;/router-view&gt; &lt;/template&gt;  &lt;style&gt; #app {   text-align: center;   color: #2c3e50;   margin-top: 60px; } &lt;/style&gt;</code></pre> <p>main.js</p> <pre><code class="language-javascript">import { createApp } from 'vue' import * as VueRouter from 'vue-router';  import App from './App.vue' import Product from './products/index.vue' import Merchands from './merchands/index.vue'  const routes = [   { path: '/', component: Product },    { path: '/m', component: Merchands }, ] const router = VueRouter.createRouter({   // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。   history: VueRouter.createWebHashHistory(),   routes, // `routes: routes` 的缩写 }) createApp(App).use(router).mount('#app')</code></pre> <p>五、效果</p> <p><img decoding="async" alt="" height="571" src="http://img.555519.xyz/uploads3/20220819/264ce8ddaeb279005f8fc8f6e12b0d8e.jpg"></p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-53965.htm">如何使用JavaScript在新标签页（而不是新窗口）中打开URL</a></p>
+                                        <p>下一个：<a href="/news/article-54520.htm">宠物批发价格查询网站（宠物货源批发市场）</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -176,16 +177,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-28775.htm" title="BeanDefinitionRegistryPostProcessor和BeanFactoryPostProcessor以及BeanPostProcessor执行先后顺序">BeanDefinitionRegistryPostProcessor和BeanFactoryPostProcessor以及BeanPostProcessor执行先后顺序</a></li>
-                        <li class="py-2"><a href="/news/article-30661.htm" title="动物医院贵吗多少钱一个 动物医院贵吗多少钱一个月">动物医院贵吗多少钱一个 动物医院贵吗多少钱一个月</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-1-11-clash-nyanpasu-node.htm" title="1月11日 - 最高速度22M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月11日 - 最高速度22M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/news/article-28322.htm" title="python函数参数的默认参数、元组参数和字典参数例解">python函数参数的默认参数、元组参数和字典参数例解</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-5-linux-clash-nyanpasu.htm" title="1月5日 - 最高速度20.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月5日 - 最高速度20.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-8-free-high-speed-nodes.htm" title="2月8日 - 最高速度19.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">2月8日 - 最高速度19.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/news/article-34486.htm" title="ASP.NET Core 6.0 添加 JWT 认证和授权">ASP.NET Core 6.0 添加 JWT 认证和授权</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-clash-nyanpasu.htm" title="11月27日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月27日 - 最高速度22.6M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-30662.htm" title="动物疫苗不小心扎到人身上会怎么样吗图片视频（动物打了疫苗的,伤了人怎么办）">动物疫苗不小心扎到人身上会怎么样吗图片视频（动物打了疫苗的,伤了人怎么办）</a></li>
-                        <li class="py-2"><a href="/news/article-35525.htm" title="动物疫苗价格查询表最新版（动物疫苗接种时间表）">动物疫苗价格查询表最新版（动物疫苗接种时间表）</a></li>
+                        <li class="py-2"><a href="/news/article-40819.htm" title="宠物用品批发进货渠道实体店地址查询（宠物用品批发商）">宠物用品批发进货渠道实体店地址查询（宠物用品批发商）</a></li>
+                        <li class="py-2"><a href="/news/article-39328.htm" title="长沙宠物猫领养中心在哪里 长沙宠物猫领养中心在哪里啊">长沙宠物猫领养中心在哪里 长沙宠物猫领养中心在哪里啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-free-node-subscribe.htm" title="1月1日 - 最高速度22.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月1日 - 最高速度22.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-47735.htm" title="宠物狗粮网店名字怎么取（宠物狗粮网店名字怎么取的）">宠物狗粮网店名字怎么取（宠物狗粮网店名字怎么取的）</a></li>
+                        <li class="py-2"><a href="/news/article-32571.htm" title="动物疫苗在哪里买的正规（动物注射疫苗注射哪里）">动物疫苗在哪里买的正规（动物注射疫苗注射哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-33527.htm" title="兰州哪有狗市场?（兰州哪有狗市场卖）">兰州哪有狗市场?（兰州哪有狗市场卖）</a></li>
+                        <li class="py-2"><a href="/news/article-53966.htm" title="vue3-VueRouter使用">vue3-VueRouter使用</a></li>
+                        <li class="py-2"><a href="/news/article-19090.htm" title="Java中的hashcode方法">Java中的hashcode方法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-subscribe-node.htm" title="11月21日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接">11月21日 - 最高速度22M/S，2024年Clash Nyanpasu每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -197,7 +198,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
