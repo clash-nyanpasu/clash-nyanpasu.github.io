@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-66832.htm" />
+    <title>JavaScript 进阶第二章（循环结构 ）</title>
+        <meta name="description" content="while循环结构 1.语法：  while(条件 true/false){ &nbsp; &nbsp; &nbsp; &nbsp; 循环体/需要重复执行的代码; &nbsp; &nbsp; }   " />
+        <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-66832.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="JavaScript 进阶第二章（循环结构 ）" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/5d43f861ef954b2e33fbd35611d1694c.webp" />
+        <meta property="og:release_date" content="2025-03-04T10:13:05" />
+    <meta property="og:updated_time" content="2025-03-04T10:13:05" />
+        <meta property="og:description" content="while循环结构 1.语法：  while(条件 true/false){ &nbsp; &nbsp; &nbsp; &nbsp; 循环体/需要重复执行的代码; &nbsp; &nbsp; }   " />
+        
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JavaScript 进阶第二章（循环结构 ）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Favicon Icon -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/plugin_theme_css.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/responsive.css">
+    <!-- modernizr js -->
+    <script src="/assets/website/js/frontend/clash_nyanpasu/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY15Z3XB3H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PY15Z3XB3H');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="em40_header_area_main">
+        <div class="tx_top2_relative">
+            <div class="all_header_abs">
+                <div class="techsold-main-menu one_page menu4 heading_style_4 witr_h_h6">
+                    <div class="techsold_nav_area transprent-menu scroll_fixed bdbar">
+                        <div class="container">
+                            <div class="row logo-left">
+                                <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                    <div class="logo">
+                                                                                <a href="/">
+                                            Clash Nyanpasu                                        </a>
+                                                                            </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12">
+                                    <nav class="techsold_menu">
+                                        <ul class="sub-menu">
+                                                                                        <li><a href="/">首页</a></li>
+                                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                                    </ul>
+                                    </nav>
+                                    <!-- MAIN MENU -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="mobile_logo_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mobilemenu_con">
+                        <div class="mobile_menu_logo text-center">
+                                                        <a href="/">
+                                Clash Nyanpasu
+                            </a>
+                                                    </div>
+                        <div class="mobile_menu_option">
+                            <div class="mobile_menu_o mobile_opicon">
+                                <i class="icofont-navigation-menu openclass"></i>
+                            </div>
+                            <div class="mobile_menu_inner mobile_p">
+                                <div class="mobile_menu_content">
+                                    <div class="mobile_menu_logo text-center">
+                                                                                <a href="/">
+                                            Clash Nyanpasu
+                                        </a>
+                                                                            </div>
+                                    <div class="menu_area mobile-menu">
+                                        <nav class="techsold_menu">
+                                            <ul class="sub-menu">
+                                                                                                <li><a href="/">首页</a></li>
+                                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="mobile_menu_o mobile_cicon">
+                                        <i class="icofont-close closeclass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobile_overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mobile Menu -->
+    <!-- breadcumb area -->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 txtc  text-center ccase">
+                    <div class="brpt brptsize">
+                        <h1 class="brcrumb_title">JavaScript 进阶第二章（循环结构 ）</h1>
+                    </div>
+                    <div class="breadcumb-inner">
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcumb area -->
+    <!-- about area -->
+    <div class="ts_about_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>while循环结构</h2> <p>1.语法：</p> <blockquote> <p>while(条件 true/false){<!-- --></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 循环体/需要重复执行的代码;<br /> &nbsp; &nbsp; }</p> </blockquote> <ul> <li> <p>执行步骤：</p> <ul> <li> <p>1.判断条件是否成立</p> <ul> <li> <p>1.1 如果成立，执行循环体代码，然后重复步骤1</p> </li> <li> <p>1.2 如果不成立，结束循环，执行大括号后面的代码</p> </li> </ul> </li> </ul> </li> <li> <p>3.注意点</p> <ul> <li> <p>（1）小括号中的语句，无论结果是什么都会转换成布尔类型来判断是否成立</p> </li> <li> <p>（2）避免写一个死循环</p> </li> </ul> </li> </ul> <h3>代码演示：</h3> <pre><code class="language-javascript">&lt;script&gt;      // 需求：打印 3 次 '你好呀，海海'      // 复制粘贴弊端：（1）代码冗余  （2）不便于维护     // console.log ( "你好呀，海海" );     // console.log ( "你好呀，海海" );     // console.log ( "你好呀，海海" );           /*     1.循环结构 ： 代码重复执行      2. 语法         while(条件 true/false){             循环体 ：需要重复执行的代码         };      执行步骤         1. 判断条件是否成立             2.1 成立：执行循环体代码。 重复步骤1             2.2 不成立，循环语句结束，执行大括号后面的代码      */     let i = 1; // 循环变量，记录循环次数     while( i &lt;= 3 ){         console.log ( "你好呀，海海" );        i++; // 循环变量自增  自增的目的是为了控制循环的次数，否则这是一个死循环     }     console.log('111'); // 大括号外的代码与循环结构没有关系，还是顺序执行      // 循环语句注意点：     // 循环语句注意点：     // (1)小括号中的语句，无论结果是什么都会转换成布尔类型来判断是否成立     // (2)避免写一个死循环     // let num = 1;     // while(num &lt; 10){     //     console.log ( num );     //     num++; // 改变循环变量的值，可以避免死循环     // }  &lt;/script&gt;</code></pre> <h2>do-while循环结构</h2> <p>1.语法</p> <blockquote> <p>do{<!-- --><br /> &nbsp; &nbsp; 循环体;<br /> }while( 条件 );</p> </blockquote> <ul> <li> <p>2.执行过程</p> <ul> <li> <p>1.先执行循环体代码</p> </li> <li> <p>2.执行条件语句</p> <ul> <li> <p>如果结果为true，执行循环体代码</p> </li> <li> <p>如果为false，循环结束</p> </li> </ul> </li> <li> <p>3.重复步骤2</p> </li> </ul> </li> <li> <p>3.do-while和while实现的循环其实是一样的，只有一个不同点：do-while循环不管怎样先执行一次循环体代码，然后再判断条件</p> <ul> <li> <p>while循环：先奏后斩（先判断条件再执行循环体）</p> </li> <li> <p>do-while循环：先斩后奏（不管怎样先执行一次循环体代码，然后再判断条件）</p> </li> </ul> </li> </ul> <h3>代码演示：</h3> <pre><code class="language-javascript">&lt;script&gt;      //1.while循环:     //let i = 1;     // while(i &gt; 5){     //     // 循环条件不成立，循环体一次都不执行     //     console.log ( "哈哈哈哈" );     //     i++     // }      //2.do-while循环     /**      do-while语法：(用的很少)       do{             循环体;         }while( 条件 );       特点：无论如何先执行一次循环体，然后再去判断条件      */     let i = 1;         do{             console.log ( "嘿嘿嘿" );             i++;         }while (i &gt; 5);        // while循环：先奏后斩（先判断条件再执行循环体）     // do-while循环：先斩后奏（不管怎样先执行一次循环体代码，然后再判断条件）      // 3.do-while循环与while循环应用场景     // 无论如何需要先执行一次循环体，使用do-while代码更简洁      // 例子：让用户输入账号和密码，如果输入正确就登陆成功，如果输入错误就让他一直输入      // while循环实现     // let username = prompt('请输入账号');     // let password = prompt('请输入密码');     //     // while(username != 'admin' || password != '123456'){     //     username = prompt('请输入账号');     //     password = prompt('请输入密码');     // }      //do-while实现     do{         let username = prompt('请输入账号');         let password = prompt('请输入密码');     }while(username != 'admin' || password != '123456')  &lt;/script&gt;</code></pre> <h2>循环结构总结</h2> <ul> <li> <p>1.原则上，三种循环结构语句之间可以互转，只不过每一种语句的适用场景不一样</p> </li> <li> <p>2.最常用：for循环：适合循环次数固定</p> </li> <li> <p>3.while循环：适合循环次数不固定</p> </li> <li> <p>4.do-while循环：适合循环次数不固定，但是循环体代码至少要执行一次</p> </li> </ul> </h1> </h1> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-66831.htm">PHP取消引用方法详解</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-41802.htm" title="开一个宠物医院需要具备什么条件和要求（想开个宠物医院）">开一个宠物医院需要具备什么条件和要求（想开个宠物医院）</a></li>
+                        <li class="py-2"><a href="/news/article-62537.htm" title="猫医院游戏（猫咪院子游戏）">猫医院游戏（猫咪院子游戏）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-subscribe-node.htm" title="3月3日 - 最高速度20.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">3月3日 - 最高速度20.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-39825.htm" title="基于mybatis-plus实现多租户级别的数据隔离">基于mybatis-plus实现多租户级别的数据隔离</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-clash-nyanpasu-node.htm" title="1月7日 - 最高速度23M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月7日 - 最高速度23M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-52896.htm" title="SpringCloud Sleuth分布式请求链路追踪">SpringCloud Sleuth分布式请求链路追踪</a></li>
+                        <li class="py-2"><a href="/news/article-43289.htm" title="成人大学兽医专业可以考兽医医师资格证吗?（成人大学兽医专业可以考兽医医师资格证吗女生）">成人大学兽医专业可以考兽医医师资格证吗?（成人大学兽医专业可以考兽医医师资格证吗女生）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe-links.htm" title="1月22日 - 最高速度19.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月22日 - 最高速度19.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-50775.htm" title="猫喜欢靠近有灵气的人（猫喜欢靠近有灵气的人的寓意）">猫喜欢靠近有灵气的人（猫喜欢靠近有灵气的人的寓意）</a></li>
+                        <li class="py-2"><a href="/news/article-52362.htm" title="springMVC中的@RequestMapping注解">springMVC中的@RequestMapping注解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer area -->
+<div class="witrfm_area">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 footer_style_1">
+                    <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p>
+                            Clash Nyanpasu官方节点站 版权所有
+                            <br />
+                            Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include All JS -->
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery-3.5.1.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/bootstrap.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/slick.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/venobox.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.appear.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.knob.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme-pluginjs.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.meanmenu.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/ajax-mail.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
