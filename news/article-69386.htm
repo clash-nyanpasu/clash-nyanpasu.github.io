@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-69386.htm" />
+    <title>numpy 中判断某字符串 array 是否含有子字符串</title>
+        <meta name="description" content="网上找了一大圈没找到, 还有好多错的… numpy.char.count(a, sub, start=0, end=None)  该函数是用来计数 sub 在 a 中出现多少次, 我们稍加修改就能达到" />
+        <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-69386.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="numpy 中判断某字符串 array 是否含有子字符串" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/245a741981554cde7bf369d3b207fbb0.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:04:49" />
+    <meta property="og:updated_time" content="2025-03-08T05:04:49" />
+        <meta property="og:description" content="网上找了一大圈没找到, 还有好多错的… numpy.char.count(a, sub, start=0, end=None)  该函数是用来计数 sub 在 a 中出现多少次, 我们稍加修改就能达到" />
+        
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="numpy 中判断某字符串 array 是否含有子字符串">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Favicon Icon -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/plugin_theme_css.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/responsive.css">
+    <!-- modernizr js -->
+    <script src="/assets/website/js/frontend/clash_nyanpasu/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY15Z3XB3H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PY15Z3XB3H');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="em40_header_area_main">
+        <div class="tx_top2_relative">
+            <div class="all_header_abs">
+                <div class="techsold-main-menu one_page menu4 heading_style_4 witr_h_h6">
+                    <div class="techsold_nav_area transprent-menu scroll_fixed bdbar">
+                        <div class="container">
+                            <div class="row logo-left">
+                                <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                    <div class="logo">
+                                                                                <a href="/">
+                                            Clash Nyanpasu                                        </a>
+                                                                            </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12">
+                                    <nav class="techsold_menu">
+                                        <ul class="sub-menu">
+                                                                                        <li><a href="/">首页</a></li>
+                                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                                    </ul>
+                                    </nav>
+                                    <!-- MAIN MENU -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="mobile_logo_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mobilemenu_con">
+                        <div class="mobile_menu_logo text-center">
+                                                        <a href="/">
+                                Clash Nyanpasu
+                            </a>
+                                                    </div>
+                        <div class="mobile_menu_option">
+                            <div class="mobile_menu_o mobile_opicon">
+                                <i class="icofont-navigation-menu openclass"></i>
+                            </div>
+                            <div class="mobile_menu_inner mobile_p">
+                                <div class="mobile_menu_content">
+                                    <div class="mobile_menu_logo text-center">
+                                                                                <a href="/">
+                                            Clash Nyanpasu
+                                        </a>
+                                                                            </div>
+                                    <div class="menu_area mobile-menu">
+                                        <nav class="techsold_menu">
+                                            <ul class="sub-menu">
+                                                                                                <li><a href="/">首页</a></li>
+                                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="mobile_menu_o mobile_cicon">
+                                        <i class="icofont-close closeclass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobile_overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mobile Menu -->
+    <!-- breadcumb area -->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 txtc  text-center ccase">
+                    <div class="brpt brptsize">
+                        <h1 class="brcrumb_title">numpy 中判断某字符串 array 是否含有子字符串</h1>
+                    </div>
+                    <div class="breadcumb-inner">
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcumb area -->
+    <!-- about area -->
+    <div class="ts_about_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>网上找了一大圈没找到, 还有好多错的…</p> <pre><code class="prism language-python">numpy<span class="token punctuation">.</span>char<span class="token punctuation">.</span>count<span class="token punctuation">(</span>a<span class="token punctuation">,</span> sub<span class="token punctuation">,</span> start<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> </code></pre> <p>该函数是用来计数 sub 在 a 中出现多少次, 我们稍加修改就能达到我们要的效果.</p> <pre><code class="prism language-python">numpy<span class="token punctuation">.</span>char<span class="token punctuation">.</span>count<span class="token punctuation">(</span>a<span class="token punctuation">,</span> sub<span class="token punctuation">,</span> start<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span> </code></pre> <p>函数的具体介绍看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://numpy.org/devdocs/reference/generated/numpy.char.count.html#numpy.char.count"  rel="nofollow">官方文档</a>.</p> <p>举例:</p> <pre><code class="prism language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'akjs'</span><span class="token punctuation">,</span> <span class="token string">'23ha'</span><span class="token punctuation">,</span> <span class="token string">'sdfg'</span><span class="token punctuation">,</span> <span class="token string">'arge'</span><span class="token punctuation">,</span> <span class="token string">'8908d'</span><span class="token punctuation">,</span> <span class="token string">'aaaab'</span><span class="token punctuation">,</span> <span class="token string">'hhdaa'</span><span class="token punctuation">,</span> <span class="token string">'wer'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token string">'str'</span><span class="token punctuation">)</span> np<span class="token punctuation">.</span>char<span class="token punctuation">.</span>count<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment"># array([1, 1, 1, 0, 1, 0, 4, 2, 0])</span> np<span class="token punctuation">.</span>char<span class="token punctuation">.</span>count<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token comment"># array([ True,  True,  True, False,  True, False,  True,  True, False])</span> </code></pre> <h3> <a id="_21" rel="nofollow"></a>欢迎来到我的博客获取最新文章~</h3> <h3> <a id="httpsblogclouderimhttpsblogclouderim_22" rel="nofollow"></a><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.clouder.im"  rel="nofollow">https://blog.clouder.im</a><br /> </h3> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-68740.htm">狗粮品牌大全图片 狗粮品牌大全图片及价格</a></p>
+                                        <p>下一个：<a href="/news/article-69387.htm">AspNetCore配置多环境log4net配置文件</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-47734.htm" title="动物疫苗价格表图片高清版下载软件（动物疫苗多少钱一支）">动物疫苗价格表图片高清版下载软件（动物疫苗多少钱一支）</a></li>
+                        <li class="py-2"><a href="/news/article-64353.htm" title="美迪青贮机官网（美迪青储机多少钱一台）">美迪青贮机官网（美迪青储机多少钱一台）</a></li>
+                        <li class="py-2"><a href="/news/article-44785.htm" title="ES的searchAfter使用详解">ES的searchAfter使用详解</a></li>
+                        <li class="py-2"><a href="/news/article-42804.htm" title="厦门宠物医院价格表（厦门宠物医院排名）">厦门宠物医院价格表（厦门宠物医院排名）</a></li>
+                        <li class="py-2"><a href="/news/article-65594.htm" title="猫多久驱一次虫?（散养的猫多久驱一次虫）">猫多久驱一次虫?（散养的猫多久驱一次虫）</a></li>
+                        <li class="py-2"><a href="/news/article-55067.htm" title="宠物领养协议范本 宠物领养协议范本免费">宠物领养协议范本 宠物领养协议范本免费</a></li>
+                        <li class="py-2"><a href="/news/article-61339.htm" title="【kafka】一次磁盘故障后消费者无法消费">【kafka】一次磁盘故障后消费者无法消费</a></li>
+                        <li class="py-2"><a href="/news/article-46266.htm" title="liunx中搭建python3.7环境和安装pycharm并搭建Django">liunx中搭建python3.7环境和安装pycharm并搭建Django</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-clash-nyanpasu-node.htm" title="1月11日 - 最高速度22M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月11日 - 最高速度22M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-51300.htm" title="什么是https和http（https和http的区别）_在线工具">什么是https和http（https和http的区别）_在线工具</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer area -->
+<div class="witrfm_area">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 footer_style_1">
+                    <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p>
+                            Clash Nyanpasu官方节点站 版权所有
+                            <br />
+                            Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include All JS -->
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery-3.5.1.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/bootstrap.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/slick.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/venobox.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.appear.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.knob.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme-pluginjs.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.meanmenu.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/ajax-mail.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

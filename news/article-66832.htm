@@ -167,6 +167,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> <h2>while循环结构</h2> <p>1.语法：</p> <blockquote> <p>while(条件 true/false){<!-- --></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 循环体/需要重复执行的代码;<br /> &nbsp; &nbsp; }</p> </blockquote> <ul> <li> <p>执行步骤：</p> <ul> <li> <p>1.判断条件是否成立</p> <ul> <li> <p>1.1 如果成立，执行循环体代码，然后重复步骤1</p> </li> <li> <p>1.2 如果不成立，结束循环，执行大括号后面的代码</p> </li> </ul> </li> </ul> </li> <li> <p>3.注意点</p> <ul> <li> <p>（1）小括号中的语句，无论结果是什么都会转换成布尔类型来判断是否成立</p> </li> <li> <p>（2）避免写一个死循环</p> </li> </ul> </li> </ul> <h3>代码演示：</h3> <pre><code class="language-javascript">&lt;script&gt;      // 需求：打印 3 次 '你好呀，海海'      // 复制粘贴弊端：（1）代码冗余  （2）不便于维护     // console.log ( "你好呀，海海" );     // console.log ( "你好呀，海海" );     // console.log ( "你好呀，海海" );           /*     1.循环结构 ： 代码重复执行      2. 语法         while(条件 true/false){             循环体 ：需要重复执行的代码         };      执行步骤         1. 判断条件是否成立             2.1 成立：执行循环体代码。 重复步骤1             2.2 不成立，循环语句结束，执行大括号后面的代码      */     let i = 1; // 循环变量，记录循环次数     while( i &lt;= 3 ){         console.log ( "你好呀，海海" );        i++; // 循环变量自增  自增的目的是为了控制循环的次数，否则这是一个死循环     }     console.log('111'); // 大括号外的代码与循环结构没有关系，还是顺序执行      // 循环语句注意点：     // 循环语句注意点：     // (1)小括号中的语句，无论结果是什么都会转换成布尔类型来判断是否成立     // (2)避免写一个死循环     // let num = 1;     // while(num &lt; 10){     //     console.log ( num );     //     num++; // 改变循环变量的值，可以避免死循环     // }  &lt;/script&gt;</code></pre> <h2>do-while循环结构</h2> <p>1.语法</p> <blockquote> <p>do{<!-- --><br /> &nbsp; &nbsp; 循环体;<br /> }while( 条件 );</p> </blockquote> <ul> <li> <p>2.执行过程</p> <ul> <li> <p>1.先执行循环体代码</p> </li> <li> <p>2.执行条件语句</p> <ul> <li> <p>如果结果为true，执行循环体代码</p> </li> <li> <p>如果为false，循环结束</p> </li> </ul> </li> <li> <p>3.重复步骤2</p> </li> </ul> </li> <li> <p>3.do-while和while实现的循环其实是一样的，只有一个不同点：do-while循环不管怎样先执行一次循环体代码，然后再判断条件</p> <ul> <li> <p>while循环：先奏后斩（先判断条件再执行循环体）</p> </li> <li> <p>do-while循环：先斩后奏（不管怎样先执行一次循环体代码，然后再判断条件）</p> </li> </ul> </li> </ul> <h3>代码演示：</h3> <pre><code class="language-javascript">&lt;script&gt;      //1.while循环:     //let i = 1;     // while(i &gt; 5){     //     // 循环条件不成立，循环体一次都不执行     //     console.log ( "哈哈哈哈" );     //     i++     // }      //2.do-while循环     /**      do-while语法：(用的很少)       do{             循环体;         }while( 条件 );       特点：无论如何先执行一次循环体，然后再去判断条件      */     let i = 1;         do{             console.log ( "嘿嘿嘿" );             i++;         }while (i &gt; 5);        // while循环：先奏后斩（先判断条件再执行循环体）     // do-while循环：先斩后奏（不管怎样先执行一次循环体代码，然后再判断条件）      // 3.do-while循环与while循环应用场景     // 无论如何需要先执行一次循环体，使用do-while代码更简洁      // 例子：让用户输入账号和密码，如果输入正确就登陆成功，如果输入错误就让他一直输入      // while循环实现     // let username = prompt('请输入账号');     // let password = prompt('请输入密码');     //     // while(username != 'admin' || password != '123456'){     //     username = prompt('请输入账号');     //     password = prompt('请输入密码');     // }      //do-while实现     do{         let username = prompt('请输入账号');         let password = prompt('请输入密码');     }while(username != 'admin' || password != '123456')  &lt;/script&gt;</code></pre> <h2>循环结构总结</h2> <ul> <li> <p>1.原则上，三种循环结构语句之间可以互转，只不过每一种语句的适用场景不一样</p> </li> <li> <p>2.最常用：for循环：适合循环次数固定</p> </li> <li> <p>3.while循环：适合循环次数不固定</p> </li> <li> <p>4.do-while循环：适合循环次数不固定，但是循环体代码至少要执行一次</p> </li> </ul> </h1> </h1> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-66831.htm">PHP取消引用方法详解</a></p>
+                                        <p>下一个：<a href="/news/article-67468.htm">pyqt5入门到基本按钮弹窗，多窗口实现等</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -176,16 +177,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-41802.htm" title="开一个宠物医院需要具备什么条件和要求（想开个宠物医院）">开一个宠物医院需要具备什么条件和要求（想开个宠物医院）</a></li>
-                        <li class="py-2"><a href="/news/article-62537.htm" title="猫医院游戏（猫咪院子游戏）">猫医院游戏（猫咪院子游戏）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-subscribe-node.htm" title="3月3日 - 最高速度20.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">3月3日 - 最高速度20.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/news/article-39825.htm" title="基于mybatis-plus实现多租户级别的数据隔离">基于mybatis-plus实现多租户级别的数据隔离</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-7-clash-nyanpasu-node.htm" title="1月7日 - 最高速度23M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月7日 - 最高速度23M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/news/article-52896.htm" title="SpringCloud Sleuth分布式请求链路追踪">SpringCloud Sleuth分布式请求链路追踪</a></li>
-                        <li class="py-2"><a href="/news/article-43289.htm" title="成人大学兽医专业可以考兽医医师资格证吗?（成人大学兽医专业可以考兽医医师资格证吗女生）">成人大学兽医专业可以考兽医医师资格证吗?（成人大学兽医专业可以考兽医医师资格证吗女生）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe-links.htm" title="1月22日 - 最高速度19.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月22日 - 最高速度19.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/news/article-50775.htm" title="猫喜欢靠近有灵气的人（猫喜欢靠近有灵气的人的寓意）">猫喜欢靠近有灵气的人（猫喜欢靠近有灵气的人的寓意）</a></li>
-                        <li class="py-2"><a href="/news/article-52362.htm" title="springMVC中的@RequestMapping注解">springMVC中的@RequestMapping注解</a></li>
+                        <li class="py-2"><a href="/news/article-44286.htm" title="学美容美发的正规学校推荐上海（上海学美容美发到哪个学校好）">学美容美发的正规学校推荐上海（上海学美容美发到哪个学校好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-free-node-subscribe.htm" title="2月4日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">2月4日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-42295.htm" title="宠物疫苗可以自己打吗现在多少钱（宠物疫苗可以自己打嘛）">宠物疫苗可以自己打吗现在多少钱（宠物疫苗可以自己打嘛）</a></li>
+                        <li class="py-2"><a href="/news/article-47242.htm" title="pytorch定义新的自动求导函数">pytorch定义新的自动求导函数</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-9-free-subscribe-node.htm" title="2月9日 - 最高速度20.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">2月9日 - 最高速度20.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-clash-nyanpasu.htm" title="2月1日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">2月1日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-27-free-high-speed-nodes.htm" title="2月27日 - 最高速度20.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">2月27日 - 最高速度20.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-57874.htm" title="北京芭比堂动物医院有限责任公司（北京芭比堂宠物）">北京芭比堂动物医院有限责任公司（北京芭比堂宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-66198.htm" title="动物医院哪个部门管理的好（动物医院是干嘛的）">动物医院哪个部门管理的好（动物医院是干嘛的）</a></li>
+                        <li class="py-2"><a href="/news/article-57873.htm" title="HTML页面的加载顺序">HTML页面的加载顺序</a></li>
                     </ul>
     </div>
 </div>
@@ -197,7 +198,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
