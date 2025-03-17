@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-75345.htm" />
+    <title>嵌入式Linux开发-根文件系统NFS网络挂载</title>
+        <meta name="description" content="1. 前言 根文件系统是Linux内核启动之后挂载的第一个文件系统，上篇文章里已经介绍过，如何使用busybox来制作根文件系统。这篇文章介绍根文件系统制作成功后，如何让内核找到文件系统，并完成挂载，" />
+        <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-75345.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="嵌入式Linux开发-根文件系统NFS网络挂载" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/245a741981554cde7bf369d3b207fbb0.webp" />
+        <meta property="og:release_date" content="2025-03-17T09:38:37" />
+    <meta property="og:updated_time" content="2025-03-17T09:38:37" />
+        <meta property="og:description" content="1. 前言 根文件系统是Linux内核启动之后挂载的第一个文件系统，上篇文章里已经介绍过，如何使用busybox来制作根文件系统。这篇文章介绍根文件系统制作成功后，如何让内核找到文件系统，并完成挂载，" />
+        
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="嵌入式Linux开发-根文件系统NFS网络挂载">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Favicon Icon -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/plugin_theme_css.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/responsive.css">
+    <!-- modernizr js -->
+    <script src="/assets/website/js/frontend/clash_nyanpasu/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY15Z3XB3H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PY15Z3XB3H');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="em40_header_area_main">
+        <div class="tx_top2_relative">
+            <div class="all_header_abs">
+                <div class="techsold-main-menu one_page menu4 heading_style_4 witr_h_h6">
+                    <div class="techsold_nav_area transprent-menu scroll_fixed bdbar">
+                        <div class="container">
+                            <div class="row logo-left">
+                                <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                    <div class="logo">
+                                                                                <a href="/">
+                                            Clash Nyanpasu                                        </a>
+                                                                            </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12">
+                                    <nav class="techsold_menu">
+                                        <ul class="sub-menu">
+                                                                                        <li><a href="/">首页</a></li>
+                                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                                    </ul>
+                                    </nav>
+                                    <!-- MAIN MENU -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="mobile_logo_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mobilemenu_con">
+                        <div class="mobile_menu_logo text-center">
+                                                        <a href="/">
+                                Clash Nyanpasu
+                            </a>
+                                                    </div>
+                        <div class="mobile_menu_option">
+                            <div class="mobile_menu_o mobile_opicon">
+                                <i class="icofont-navigation-menu openclass"></i>
+                            </div>
+                            <div class="mobile_menu_inner mobile_p">
+                                <div class="mobile_menu_content">
+                                    <div class="mobile_menu_logo text-center">
+                                                                                <a href="/">
+                                            Clash Nyanpasu
+                                        </a>
+                                                                            </div>
+                                    <div class="menu_area mobile-menu">
+                                        <nav class="techsold_menu">
+                                            <ul class="sub-menu">
+                                                                                                <li><a href="/">首页</a></li>
+                                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="mobile_menu_o mobile_cicon">
+                                        <i class="icofont-close closeclass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobile_overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mobile Menu -->
+    <!-- breadcumb area -->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 txtc  text-center ccase">
+                    <div class="brpt brptsize">
+                        <h1 class="brcrumb_title">嵌入式Linux开发-根文件系统NFS网络挂载</h1>
+                    </div>
+                    <div class="breadcumb-inner">
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcumb area -->
+    <!-- about area -->
+    <div class="ts_about_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night-eighties"> <h2><a id="1__0" rel="nofollow"></a>1. 前言</h2> <p>根文件系统是Linux内核启动之后挂载的第一个文件系统，上篇文章里已经介绍过，如何使用busybox来制作根文件系统。这篇文章介绍根文件系统制作成功后，如何让内核找到文件系统，并完成挂载，进入到系统命令行终端。</p> <p>根文件系统支持从网络挂载和本地挂载两种方式：</p> <p>（1）如果是采用网络挂载就将路径设置为/dev/nfs，NFS是Linux下常用的网络文件系统，这种方式挂载一般是在系统开发阶段，方便修改调试代码，也就是将根文件系统放在PC机上，嵌入式开发板通过网络到PC机进行访问。</p> <p>（2）本地挂载就是让内核从SD卡、EMMC、光盘等设备里加载根文件系统，设备路径设置为/dev/sda、/dev/ram等等。具体设备节点名称是什么就填什么。本地挂载一般用在产品发布的时候，当整个系统开发完毕，就将PC机上的完整目录拷贝到本地存储设备里，让内核直接从本地加载，这样开启启动的速度会快很多，文件读写也快很多，不在经过网络传输。本地挂载不方便调试代码，一般开发阶段还是NFS方式比较方便。</p> <p>上面说的路径设置这些配置是在uboot里设置，uboot有一个环境变量专门用于给内核传参，当内核启动之后，会根据uboot传递的参数完成执行。</p> <p>当前采用的开发板是友善之臂的Tiny4412，内核、uboot、交叉编译器都采用官方光盘自带的文件。</p> <p><strong>如果设置内核为NFS网络挂载，uboot的环境变量设置格式如下：</strong></p> <pre><code class="prism language-bash">TINY4412<span class="token comment"># setenv bootargs root=/dev/nfs nfsroot=192.168.10.11:/home/wbyq/work/rootfs ip=192.168.10.123:192.168.10.11:192.168.10.1:255.255.255.0::eth0:off init=/linuxrc console=ttySAC0 lcd=S702</span> TINY4412<span class="token comment"># saveenv</span> TINY4412<span class="token comment"># reset</span></code></pre> <h2><a id="2_NFS_22" rel="nofollow"></a>2. NFS网络方式挂载</h2> <p>前提是先把根文件系统制作好才能继续这一步。当前的宿主机采用redhat6.3，这个系统比较老，但是功能是很齐全的，运行起来很流畅。要进行NFS网络挂载，需要先把PC机的网络与开发板的网络设置好，保证在同一个局域网内。当前的redhat6.3系统是跑在VM虚拟机里，接下来就对网络进行配置。</p> <p><strong>开发板NFS网络挂载的思路:</strong></p> <ol> <li>PC机开启NFS服务器,配置NFS共享的路径: 将rootfs共享出来.</li> <li>开发板当做NFS客户端,去挂载PC机共享的目录，完成文件系统的访问</li> </ol> <p><strong>（1）配置虚拟机网络</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/7eba4ea544f554c5a460a0cf2492ead8.jpg" alt="嵌入式Linux开发-根文件系统NFS网络挂载"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/1a70cb2b8544b4578b534d2e3fb77afd.jpg" alt="嵌入式Linux开发-根文件系统NFS网络挂载"></p> <p><strong>（2）配置PC机NFS服务器</strong></p> <pre><code class="prism language-bash"><span class="token punctuation">[</span>wbyq@wbyq rootfs<span class="token punctuation">]</span>$<span class="token function">sudo</span><span class="token function">vim</span> /etc/exports /home/wbyq/work/rootfs *<span class="token punctuation">(</span>insecure,rw,no_root_squash,sync<span class="token punctuation">)</span></code></pre> <p>编写个脚本方便启动NFS服务器: 可以放在用户目录下<br /> 比如:<code>nfs_restart.sh</code> 运用脚本要使用管理员权限,脚本改权限为可执行</p> <pre><code class="prism language-bash"><span class="token function">service</span> nfs restart<span class="token comment">#重启 NFS 服务器</span><span class="token function">service</span> iptables stop<span class="token comment">#关闭防火墙</span><span class="token function">ifconfig</span> eth0<span class="token number">192.168</span>.10.11<span class="token comment">#设置IP地址</span></code></pre> <p>查看系统网卡名称:<code>ifconfig</code></p> <p><strong>（3）运行脚本启动NFS服务器</strong></p> <pre><code class="prism language-bash"><span class="token punctuation">[</span>wbyq@wbyq ~<span class="token punctuation">]</span>$<span class="token function">sudo</span> ./nfs_restart.sh<span class="token punctuation">[</span>sudo<span class="token punctuation">]</span> password<span class="token keyword">for</span> wbyq:  关闭 NFS 守护进程：<span class="token punctuation">[</span>失败<span class="token punctuation">]</span> 关闭 NFS mountd：<span class="token punctuation">[</span>失败<span class="token punctuation">]</span> 关闭 NFS quotas：<span class="token punctuation">[</span>失败<span class="token punctuation">]</span> 关闭 NFS 服务：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 启动 NFS 服务：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 关掉 NFS 配额：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 启动 NFS mountd：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 正在启动 RPC idmapd：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 正在启动 RPC idmapd：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 启动 NFS 守护进程：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span><span class="token punctuation">[</span>wbyq@wbyq ~<span class="token punctuation">]</span>$<span class="token function">sudo</span> ./nfs_restart.sh  关闭 NFS 守护进程：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 关闭 NFS mountd：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 关闭 NFS quotas：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 关闭 NFS 服务：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 启动 NFS 服务：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 关掉 NFS 配额：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 启动 NFS mountd：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 正在启动 RPC idmapd：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 正在启动 RPC idmapd：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span> 启动 NFS 守护进程：<span class="token punctuation">[</span>确定<span class="token punctuation">]</span><span class="token punctuation">[</span>wbyq@wbyq ~<span class="token punctuation">]</span>$</code></pre> <p><strong>（4）设置UBOOT的环境变量</strong></p> <pre><code class="prism language-bash">进入到uboot的命令行，设置环境变量。<span class="token builtin class-name">set</span> bootargs<span class="token assign-left variable">root</span><span class="token operator">=</span>/dev/nfs<span class="token assign-left variable">nfsroot</span><span class="token operator">=</span><span class="token number">192.168</span>.10.11:/home/wbyq/work/rootfs<span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token number">192.168</span>.10.123:192.168.10.11:192.168.10.1:255.255.255.0::eth0:off<span class="token assign-left variable">init</span><span class="token operator">=</span>/linuxrc<span class="token assign-left variable">console</span><span class="token operator">=</span>ttySAC0<span class="token assign-left variable">lcd</span><span class="token operator">=</span>S702<span class="token builtin class-name">set</span> bootargs<span class="token assign-left variable">root</span><span class="token operator">=</span>/dev/nfs<span class="token assign-left variable">nfsroot</span><span class="token operator">=</span><span class="token operator">&lt;</span>服务器地址<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>NFS共享路径<span class="token operator">&gt;</span><span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token operator">&lt;</span>开发板IP<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>服务器地址<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>网关<span class="token operator">&gt;</span>:255.255.255.0::eth0:off<span class="token assign-left variable">init</span><span class="token operator">=</span>/linuxrc<span class="token assign-left variable">console</span><span class="token operator">=</span>ttySAC0<span class="token assign-left variable">lcd</span><span class="token operator">=</span>S702  执行示例: TINY4412<span class="token comment"># set bootargs root=/dev/nfs nfsroot=192.168.10.11:/home/wbyq/work/rootfs ip=192.168.10.123:192.168.10.11:192.168.10.1:255.255.255.0::eth0:off init=/linuxrc console=ttySAC0 lcd=S702</span> TINY4412<span class="token comment"># save</span> TINY4412<span class="token comment"># reset</span></code></pre> <p>重启之后开发板正常就会进入到Linux命令行：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/5d40b2019dd926e5e654998b1c2915b6.jpg" alt="嵌入式Linux开发-根文件系统NFS网络挂载"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/7303634e529c8cb9d74743465f7d4710.jpg" alt="嵌入式Linux开发-根文件系统NFS网络挂载"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/3e27b1e716cc196a6882b5b8d3fe46db.jpg" alt="嵌入式Linux开发-根文件系统NFS网络挂载"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-74675.htm">瑞鹏宠物医院咋样（瑞鹏宠物医院咋样收费）</a></p>
+                                        <p>下一个：<a href="/news/article-75346.htm">Java Web实现用户登录功能</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-64965.htm" title="0基础学MySQL数据库—从小白到大牛（1）初识数据库">0基础学MySQL数据库—从小白到大牛（1）初识数据库</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-linux-clash-nyanpasu.htm" title="3月7日 - 最高速度20.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">3月7日 - 最高速度20.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-49743.htm" title="开动物医院什么资质最好 开动物医院什么资质最好呢">开动物医院什么资质最好 开动物医院什么资质最好呢</a></li>
+                        <li class="py-2"><a href="/news/article-57874.htm" title="北京芭比堂动物医院有限责任公司（北京芭比堂宠物）">北京芭比堂动物医院有限责任公司（北京芭比堂宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-62537.htm" title="猫医院游戏（猫咪院子游戏）">猫医院游戏（猫咪院子游戏）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-linux-clash-nyanpasu.htm" title="3月12日 - 最高速度20.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">3月12日 - 最高速度20.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-node-subscribe.htm" title="3月16日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">3月16日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-72006.htm" title="动物疫苗接种时间表图片高清大图（动物 疫苗）">动物疫苗接种时间表图片高清大图（动物 疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-66832.htm" title="JavaScript 进阶第二章（循环结构 ）">JavaScript 进阶第二章（循环结构 ）</a></li>
+                        <li class="py-2"><a href="/news/article-51830.htm" title="打完动物疫苗注意事项（动物打疫苗后多久能杀了吃）">打完动物疫苗注意事项（动物打疫苗后多久能杀了吃）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer area -->
+<div class="witrfm_area">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 footer_style_1">
+                    <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p>
+                            Clash Nyanpasu官方节点站 版权所有
+                            <br />
+                            Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include All JS -->
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery-3.5.1.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/bootstrap.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/slick.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/venobox.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.appear.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.knob.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme-pluginjs.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.meanmenu.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/ajax-mail.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
