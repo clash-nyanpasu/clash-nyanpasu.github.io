@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-nyanpasu.github.io/news/article-79451.htm" />
+    <title>数据结构——C语言实现带头双向循环链表</title>
+        <meta name="description" content="数据结构——C语言实现带头双向循环链表 带头双向循环链表：结构最复杂，一般用在单独存储数据。实际中使用的链表数据结构，都是带头双向循环链表。另外这个结构虽然结构复杂，但是使用代码实现以后会发现结构会带" />
+        <link rel="icon" href="/assets/website/img/clash_nyanpasu/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Nyanpasu官方节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-nyanpasu.github.io/news/article-79451.htm" />
+    <meta property="og:site_name" content="Clash Nyanpasu官方节点站" />
+    <meta property="og:title" content="数据结构——C语言实现带头双向循环链表" />
+    <meta property="og:image" content="https://clash-nyanpasu.github.io/uploads/20240728/9a8b2d23dfd67977f6829426c20385a9.webp" />
+        <meta property="og:release_date" content="2025-03-23T08:21:08" />
+    <meta property="og:updated_time" content="2025-03-23T08:21:08" />
+        <meta property="og:description" content="数据结构——C语言实现带头双向循环链表 带头双向循环链表：结构最复杂，一般用在单独存储数据。实际中使用的链表数据结构，都是带头双向循环链表。另外这个结构虽然结构复杂，但是使用代码实现以后会发现结构会带" />
+        
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="数据结构——C语言实现带头双向循环链表">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Favicon Icon -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/venobox.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/plugin_theme_css.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/clash_nyanpasu/responsive.css">
+    <!-- modernizr js -->
+    <script src="/assets/website/js/frontend/clash_nyanpasu/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY15Z3XB3H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PY15Z3XB3H');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="em40_header_area_main">
+        <div class="tx_top2_relative">
+            <div class="all_header_abs">
+                <div class="techsold-main-menu one_page menu4 heading_style_4 witr_h_h6">
+                    <div class="techsold_nav_area transprent-menu scroll_fixed bdbar">
+                        <div class="container">
+                            <div class="row logo-left">
+                                <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                    <div class="logo">
+                                                                                <a href="/">
+                                            Clash Nyanpasu                                        </a>
+                                                                            </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12">
+                                    <nav class="techsold_menu">
+                                        <ul class="sub-menu">
+                                                                                        <li><a href="/">首页</a></li>
+                                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                                    </ul>
+                                    </nav>
+                                    <!-- MAIN MENU -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="mobile_logo_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mobilemenu_con">
+                        <div class="mobile_menu_logo text-center">
+                                                        <a href="/">
+                                Clash Nyanpasu
+                            </a>
+                                                    </div>
+                        <div class="mobile_menu_option">
+                            <div class="mobile_menu_o mobile_opicon">
+                                <i class="icofont-navigation-menu openclass"></i>
+                            </div>
+                            <div class="mobile_menu_inner mobile_p">
+                                <div class="mobile_menu_content">
+                                    <div class="mobile_menu_logo text-center">
+                                                                                <a href="/">
+                                            Clash Nyanpasu
+                                        </a>
+                                                                            </div>
+                                    <div class="menu_area mobile-menu">
+                                        <nav class="techsold_menu">
+                                            <ul class="sub-menu">
+                                                                                                <li><a href="/">首页</a></li>
+                                                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="mobile_menu_o mobile_cicon">
+                                        <i class="icofont-close closeclass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobile_overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mobile Menu -->
+    <!-- breadcumb area -->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 txtc  text-center ccase">
+                    <div class="brpt brptsize">
+                        <h1 class="brcrumb_title">数据结构——C语言实现带头双向循环链表</h1>
+                    </div>
+                    <div class="breadcumb-inner">
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>-<span class="current">正文</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcumb area -->
+    <!-- about area -->
+    <div class="ts_about_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p><strong>数据结构——C语言实现带头双向循环链表</strong><br /> 带头双向循环链表：结构最复杂，一般用在单独存储数据。实际中使用的链表数据结构，都是带头双向循环链表。另外这个结构虽然结构复杂，但是使用代码实现以后会发现结构会带来很多优势，实现反而简单了，后面我们代码实现了就知道了，比单链表实用的多。<br /> 图示：<br /><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads/20230203/b330e73cc14b0bc633e74fca4025aa2f.jpg"><br /> ListNode.h文件：</p> <pre><code>#include&lt;stdio.h&gt; typedef struct ListNode {  DataType _data;  struct ListNode* _next;  struct ListNode* _prev; }ListNode; typedef struct List {  struct ListNode* _head; }List; void ListInit(List* plist);//初始化带头双向循环链表 void ListDestory(List* plist);//销毁 ListNode* CreatListNode(DataType x);// void ListPushBack(List* plist, DataType x);//尾插 void ListPopBack(List* plist);//尾删 void ListPushFront(List* plist, DataType x);//头插 void ListPopFront(List* plist);//头删 void ListInsert(List* plist,ListNode* pos, DataType x);//在pos前面插入 void ListErase(List* plist,ListNode* pos); // 删除pos位置的结点 void ListPrint(List* plist); void testList(); </code></pre> <p>ListNode.c文件：</p> <pre><code>#include"ListNode.h" #include&lt;assert.h&gt; #include&lt;malloc.h&gt; //初始化链表 void ListInit(List* plist) {  assert(plist);  plist-&gt;_head = CreatListNode(0);  //仅有头结点时前驱结点和后继结点均指向自身  plist-&gt;_head-&gt;_next = plist-&gt;_head;  plist-&gt;_head-&gt;_prev = plist-&gt;_head; } //销毁链表 void ListDestory(List* plist) {  assert(plist);  ListNode* cur=plist-&gt;_head-&gt;_next;  while (cur != plist-&gt;_head)  {   ListNode* next = cur-&gt;_next;   //遍历释放空间   free(cur);   //释放空间后将其置为空   cur = next;  }  //最后释放头结点  free(plist-&gt;_head);  plist-&gt;_head = NULL; } //生成新结点 ListNode* CreatListNode(DataType x) { //分配空间  ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));  //为新结点赋值  newNode-&gt;_data = x;  newNode-&gt;_next = newNode-&gt;_prev = NULL;  return newNode; } //尾插 void ListPushBack(List* plist, DataType x) {  assert(plist);  ListNode* newNode = CreatListNode(x);  ListNode* tail = plist-&gt;_head-&gt;_prev;  tail-&gt;_next = newNode;  newNode-&gt;_next = plist-&gt;_head;  newNode-&gt;_prev = tail;  plist-&gt;_head-&gt;_prev = newNode; } //尾删 void ListPopBack(List* plist) {  assert(plist);  ListNode* prev, * tail;  //判断是否为头结点  if (plist-&gt;_head == plist-&gt;_head-&gt;_next)  {   return;  }  tail = plist-&gt;_head-&gt;_prev;  prev = tail-&gt;_prev;  prev-&gt;_next = plist-&gt;_head;  plist-&gt;_head-&gt;_prev = prev;  free(tail);  tail = NULL; } //头插 void ListPushFront(List* plist, DataType x) {  assert(plist);  ListNode* newNode = CreatListNode(x);  ListNode* next = plist-&gt;_head-&gt;_next;  plist-&gt;_head-&gt;_next = newNode;   newNode-&gt;_prev = plist-&gt;_head;  newNode-&gt;_next = next;  next-&gt;_prev = newNode; } //头删 void ListPopFront(List* plist) {  assert(plist);  ListNode* next = plist-&gt;_head-&gt;_next;  ListNode* nextnext=next-&gt;_next;  //判断是否为头结点  if (plist-&gt;_head == plist-&gt;_head-&gt;_next)  {   return;  }  plist-&gt;_head-&gt;_next = nextnext;  nextnext-&gt;_prev = plist-&gt;_head;  free(next);  next = NULL; } //在pos位置前面插入 void ListInsert(List* plist, ListNode* pos, DataType x) {  assert(plist &amp;&amp; pos);  ListNode* prev = pos-&gt;_prev;  ListNode* newNode = CreatListNode(x);  prev-&gt;_next = newNode;  newNode-&gt;_prev = prev;  newNode-&gt;_next = pos;  pos-&gt;_prev = newNode; } //删除pos位置的结点 void ListErase(List* plist,ListNode* pos) {  assert(plist &amp;&amp; pos);  ListNode* prev, * next;  //判断是否为头结点  if (plist-&gt;_head == pos)  {   return;  }  prev = pos-&gt;_prev;  next = pos-&gt;_next;  prev-&gt;_next = next;  next-&gt;_prev = prev;  free(pos);  pos = NULL; } //打印链表 void ListPrint(List* plist) {  assert(plist);  ListNode* cur = plist-&gt;_head-&gt;_next;  while (cur != plist-&gt;_head)  {     printf("%d-&gt;", cur-&gt;_data);     cur = cur-&gt;_next;  }  printf("\n"); } //测试 void testList() {  List list;  ListInit(&amp;list);  ListPushBack(&amp;list, 1);  ListPushBack(&amp;list, 2);  ListPushBack(&amp;list, 3);  ListPushBack(&amp;list, 4);  ListPushFront(&amp;list, 1);  ListPushFront(&amp;list, 2);  ListPushFront(&amp;list, 3);  ListPushFront(&amp;list, 4);  ListPrint(&amp;list);  ListPopBack(&amp;list);  ListPopFront(&amp;list);  ListPrint(&amp;list);  ListDestory(&amp;list);  ListPrint(&amp;list); </code></pre> <p>main.c文件</p> <pre><code>int main() {  testList();  return 0; } </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-78767.htm">纯手工宠物零食的产品用途（纯手工宠物零食的产品用途怎么写）</a></p>
+                                        <p>下一个：<a href="/news/article-79452.htm">宠物品牌排行前十名（知名宠物品牌）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-node-share-links.htm" title="1月31日 - 最高速度21.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月31日 - 最高速度21.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-79452.htm" title="宠物品牌排行前十名（知名宠物品牌）">宠物品牌排行前十名（知名宠物品牌）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-node-share-links.htm" title="3月15日 - 最高速度18.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">3月15日 - 最高速度18.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-linux-clash-nyanpasu.htm" title="3月5日 - 最高速度19.2M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">3月5日 - 最高速度19.2M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-linux-clash-nyanpasu.htm" title="1月17日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">1月17日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-40818.htm" title="南京宠物领养吧百度贴吧（南京最大的宠物店免费领养）">南京宠物领养吧百度贴吧（南京最大的宠物店免费领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-17-free-node-subscribe-links.htm" title="3月17日 - 最高速度21.2M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">3月17日 - 最高速度21.2M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/news/article-76032.htm" title="Spring学习笔记（二）后处理器与AOP">Spring学习笔记（二）后处理器与AOP</a></li>
+                        <li class="py-2"><a href="/news/article-73332.htm" title="打疫苗能吃不（打疫苗的时候能不能吃）">打疫苗能吃不（打疫苗的时候能不能吃）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-24-free-node-subscribe.htm" title="2月24日 - 最高速度20.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">2月24日 - 最高速度20.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">68</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer area -->
+<div class="witrfm_area">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 footer_style_1">
+                    <div class="copy-right-text text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p>
+                            Clash Nyanpasu官方节点站 版权所有
+                            <br />
+                            Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include All JS -->
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery-3.5.1.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/bootstrap.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/slick.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/venobox.min.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.appear.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.knob.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme-pluginjs.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/jquery.meanmenu.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/ajax-mail.js"></script>
+<script src="/assets/website/js/frontend/clash_nyanpasu/theme.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
