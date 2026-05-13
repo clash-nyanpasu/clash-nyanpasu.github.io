@@ -407,24 +407,19 @@ A：公共DNS如Google DNS和Cloudflare DNS通常更稳定，能一定程度上�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的“节点切换策略”如何配置？</h5></div>
+    <div class="panel-heading"><h5>Nekobox 可以与 Shadowsocks 等客户端同时使用吗？</h5></div>
     <div class="panel-body">
-        在 PassWall2 中可设置多节点策略，如“按延迟排序”、“自动选择最快节点”等。程序会定期测速，根据实时数据自动切换线路，保证连接的稳定性和速度。<hr />    </div>
+        可以。Nekobox 配置独立，与 Shadowsocks、Clash 等客户端互不干扰。用户可根据需要通过策略组选择节点，实现灵活的网络管理和分流策略。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何实现？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 能否兼容最新的 iOS 系统？</h5></div>
     <div class="panel-body">
-        用户添加订阅 URL 后，Nekoray 会定期下载最新节点列表并替换旧节点。保持节点列表最新可减少手动维护，保证节点可用性和网络连接稳定性，提升使用体验。<hr />    </div>
+        Potatso Lite 更新频率较低，在新版本 iOS 上可能出现兼容性问题。若遇到无法连接或闪退情况，建议升级至其他活跃维护的客户端如 Shadowrocket 或 Quantumult X。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点测试？</h5></div>
+    <div class="panel-heading"><h5>Mihomo 的 Rule-Set 与 Clash Premium 是否兼容？</h5></div>
     <div class="panel-body">
-        Potatso Lite 支持手动测试单个节点延迟，但不支持批量自动测速。用户需逐个连接测试节点性能，或者结合其他客户端获取更全面的测速信息。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 协议的安全性如何？</h5></div>
-    <div class="panel-body">
-        Trojan 使用与 HTTPS 类似的 TLS 加密通道，使其数据流难以与普通网页访问区分。它兼具隐蔽性与安全性，几乎无法被防火墙检测。Trojan 协议的主要优势在于稳定、安全、兼容性强，因此广受高级用户青睐。<hr />    </div>
+        Mihomo 完全兼容 Clash Premium 的 Rule-Set 格式，支持相同的远程规则订阅与策略分组。用户可直接迁移原 Clash 配置，无需额外修改或转换。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 的节点测速结果会自动更新吗？</h5></div>
@@ -437,14 +432,14 @@ A：公共DNS如Google DNS和Cloudflare DNS通常更稳定，能一定程度上�
         QUIC 传输减少握手次数，支持多路复用和 UDP 基础，降低延迟并提高吞吐量。在不稳定或高丢包环境下，QUIC 可保证视频、游戏或即时通讯的稳定性和流畅体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 可以与 Shadowsocks 等客户端同时使用吗？</h5></div>
+    <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何实现？</h5></div>
     <div class="panel-body">
-        可以。Nekobox 配置独立，与 Shadowsocks、Clash 等客户端互不干扰。用户可根据需要通过策略组选择节点，实现灵活的网络管理和分流策略。<hr />    </div>
+        用户添加订阅 URL 后，Nekoray 会定期下载最新节点列表并替换旧节点。保持节点列表最新可减少手动维护，保证节点可用性和网络连接稳定性，提升使用体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 能否兼容最新的 iOS 系统？</h5></div>
+    <div class="panel-heading"><h5>PassWall2 的“节点切换策略”如何配置？</h5></div>
     <div class="panel-body">
-        Potatso Lite 更新频率较低，在新版本 iOS 上可能出现兼容性问题。若遇到无法连接或闪退情况，建议升级至其他活跃维护的客户端如 Shadowrocket 或 Quantumult X。<hr />    </div>
+        在 PassWall2 中可设置多节点策略，如“按延迟排序”、“自动选择最快节点”等。程序会定期测速，根据实时数据自动切换线路，保证连接的稳定性和速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 是否支持 Clash 配置？</h5></div>
@@ -452,9 +447,14 @@ A：公共DNS如Google DNS和Cloudflare DNS通常更稳定，能一定程度上�
         Surfboard 是一款支持多种协议的客户端应用，它能够兼容 Clash 的配置文件格式，用户只需导入 YAML 文件即可。该应用以轻量、高速著称，常用于 iOS 和 macOS 系统。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 的 Rule-Set 与 Clash Premium 是否兼容？</h5></div>
+    <div class="panel-heading"><h5>Trojan 协议的安全性如何？</h5></div>
     <div class="panel-body">
-        Mihomo 完全兼容 Clash Premium 的 Rule-Set 格式，支持相同的远程规则订阅与策略分组。用户可直接迁移原 Clash 配置，无需额外修改或转换。    </div>
+        Trojan 使用与 HTTPS 类似的 TLS 加密通道，使其数据流难以与普通网页访问区分。它兼具隐蔽性与安全性，几乎无法被防火墙检测。Trojan 协议的主要优势在于稳定、安全、兼容性强，因此广受高级用户青睐。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点测试？</h5></div>
+    <div class="panel-body">
+        Potatso Lite 支持手动测试单个节点延迟，但不支持批量自动测速。用户需逐个连接测试节点性能，或者结合其他客户端获取更全面的测速信息。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -483,16 +483,16 @@ A：公共DNS如Google DNS和Cloudflare DNS通常更稳定，能一定程度上�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-4-29-node-share.htm" title="4月29日 - 最高速度22.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月29日 - 最高速度22.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-16-free-node-subscribe-links.htm" title="4月16日 - 最高速度19.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月16日 - 最高速度19.3M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-11-node-share-links.htm" title="4月11日 - 最高速度19.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月11日 - 最高速度19.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-10-clash-nyanpasu.htm" title="4月10日 - 最高速度22.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月10日 - 最高速度22.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-27-node-share.htm" title="4月27日 - 最高速度20M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月27日 - 最高速度20M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-4-12-free-high-speed-nodes.htm" title="4月12日 - 最高速度19.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月12日 - 最高速度19.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-30-clash-nyanpasu.htm" title="4月30日 - 最高速度19.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月30日 - 最高速度19.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-9-free-high-speed-nodes.htm" title="4月9日 - 最高速度20.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月9日 - 最高速度20.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-4-22-node-share.htm" title="4月22日 - 最高速度21.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月22日 - 最高速度21.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-13-free-clash-nyanpasu.htm" title="4月13日 - 最高速度19.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月13日 - 最高速度19.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-9-clash-nyanpasu.htm" title="5月9日 - 最高速度20.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月9日 - 最高速度20.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-4-linux-clash-nyanpasu.htm" title="5月4日 - 最高速度23M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月4日 - 最高速度23M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-14-clash-nyanpasu.htm" title="4月14日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月14日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-5-3-free-high-speed-nodes.htm" title="5月3日 - 最高速度18.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月3日 - 最高速度18.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-28-node-share-links.htm" title="4月28日 - 最高速度22.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月28日 - 最高速度22.7M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-6-linux-clash-nyanpasu.htm" title="5月6日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月6日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-5-linux-clash-nyanpasu.htm" title="5月5日 - 最高速度20.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月5日 - 最高速度20.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
                     </ul>
     </div>
 </div>
@@ -504,10 +504,10 @@ A：公共DNS如Google DNS和Cloudflare DNS通常更稳定，能一定程度上�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
+                <h4><span class="badge" style="float: right;">11</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                     </ul>
     </div>
