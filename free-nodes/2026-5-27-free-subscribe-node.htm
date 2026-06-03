@@ -326,32 +326,13 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2026-5-26-node-share.htm">5月26日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></p>
+        <p>下一个：<a href="/free-nodes/2026-5-28-clash-nyanpasu.htm">5月28日 - 最高速度21.9M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 能否直接读取 Clash 配置？</h5></div>
+    <div class="panel-heading"><h5>WinXray 如何导入订阅？</h5></div>
     <div class="panel-body">
-        Sing-box 原生支持 Clash YAML 格式的导入，会自动解析成自身 JSON 结构。虽然部分脚本功能不兼容，但节点和规则可以正常使用，迁移过程非常平滑。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 的全局代理如何启用？</h5></div>
-    <div class="panel-body">
-        在 Mellow 中可通过开启 TUN 模式来启用全局代理。启用后，系统的所有流量都会经过代理转发，可实现全面科学上网。需注意系统防火墙可能会提示权限请求。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 策略组如何根据节点延迟自动选择？</h5></div>
-    <div class="panel-body">
-        策略组会根据节点延迟和丢包率自动选择最优节点。结合路由规则可保证国内流量直连，海外流量走最佳节点，提高访问速度和连接稳定性，优化整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 如何为游戏流量提供加速？</h5></div>
-    <div class="panel-body">
-        Netch 支持 UDP 转发，可为游戏流量建立高速通道。结合策略组和节点延迟检测，可减少丢包和延迟，保证游戏访问稳定流畅，提高网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>使用 Reality 协议后，客户端与服务端的密钥如何管理？</h5></div>
-    <div class="panel-body">
-        Reality 使用公私钥对进行认证，应生成唯一的公私钥对并妥善保存私钥，公钥可部署在服务端配置中。避免在多个服务共享同一密钥，定期轮换密钥并通过安全通道传输公钥以防泄露。<hr />    </div>
+        在 WinXray 界面中点击“导入订阅”选项，将机场提供的订阅链接粘贴进去。点击更新后，WinXray 会自动下载节点配置并生成列表，用户可手动选择或自动切换延迟最低的节点使用。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>QuantumultX 如何实现按端口和协议分流？</h5></div>
@@ -359,9 +340,24 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         QuantumultX 支持按 TCP、UDP、端口及应用协议分流流量，结合策略组选择最优节点。可为游戏、视频和广告屏蔽提供最佳网络体验，提高访问速度和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 策略组如何根据节点延迟自动选择？</h5></div>
+    <div class="panel-body">
+        策略组会根据节点延迟和丢包率自动选择最优节点。结合路由规则可保证国内流量直连，海外流量走最佳节点，提高访问速度和连接稳定性，优化整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 支持多用户配置吗？</h5></div>
+    <div class="panel-body">
+        Hysteria2 支持多用户配置，管理员可以在服务器端为不同用户分配独立凭证。这样既能保障隐私，也便于流量统计和限速控制，适合团队或小型共享环境。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 的多节点分流如何设置？</h5></div>
     <div class="panel-body">
         可通过策略组定义不同节点用途和优先级，结合规则文件将特定域名、IP 或端口流量分流至相应节点，实现游戏、视频或网页加速，并优化整体网络性能和稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>使用 Reality 协议后，客户端与服务端的密钥如何管理？</h5></div>
+    <div class="panel-body">
+        Reality 使用公私钥对进行认证，应生成唯一的公私钥对并妥善保存私钥，公钥可部署在服务端配置中。避免在多个服务共享同一密钥，定期轮换密钥并通过安全通道传输公钥以防泄露。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 如何配置混淆以应对封锁升级？</h5></div>
@@ -369,14 +365,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         选择合适的混淆方式，如 tls1.2_ticket_auth，可模拟正常 HTTPS 流量。合理搭配协议和混淆参数，可有效降低被 DPI 检测和封锁的风险，提高节点长期稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 如何导入订阅？</h5></div>
+    <div class="panel-heading"><h5>Netch 如何为游戏流量提供加速？</h5></div>
     <div class="panel-body">
-        在 WinXray 界面中点击“导入订阅”选项，将机场提供的订阅链接粘贴进去。点击更新后，WinXray 会自动下载节点配置并生成列表，用户可手动选择或自动切换延迟最低的节点使用。<hr />    </div>
+        Netch 支持 UDP 转发，可为游戏流量建立高速通道。结合策略组和节点延迟检测，可减少丢包和延迟，保证游戏访问稳定流畅，提高网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 支持多用户配置吗？</h5></div>
+    <div class="panel-heading"><h5>Mellow 的全局代理如何启用？</h5></div>
     <div class="panel-body">
-        Hysteria2 支持多用户配置，管理员可以在服务器端为不同用户分配独立凭证。这样既能保障隐私，也便于流量统计和限速控制，适合团队或小型共享环境。    </div>
+        在 Mellow 中可通过开启 TUN 模式来启用全局代理。启用后，系统的所有流量都会经过代理转发，可实现全面科学上网。需注意系统防火墙可能会提示权限请求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 能否直接读取 Clash 配置？</h5></div>
+    <div class="panel-body">
+        Sing-box 原生支持 Clash YAML 格式的导入，会自动解析成自身 JSON 结构。虽然部分脚本功能不兼容，但节点和规则可以正常使用，迁移过程非常平滑。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -399,22 +400,43 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default box right-ad-box">
+    <div class="panel-heading">
+        <h3 class="panel-title">特别推荐</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="text-center">
+                <a href="javascript:;" class="js_to" data-url="https://www.futizi.net/?code=" data-type="Luniuyun" data-code="svvkQf3y" target="_blank">
+                    <img src="/assets/website/img/G/luniuyun.webp" class="avatar" alt="绿牛云">
+                </a>
+                <dl>
+                    <dt><a href="javascript:;" class="js_to" data-url="https://www.futizi.net/?code=" data-type="Luniuyun" data-code="svvkQf3y" target="_blank">绿牛云</a></dt>
+                    <dd>
+                        <p>高速稳定的网络加速</p>
+                        <p>畅享全球内容，访问 ChatGPT、TikTok、Google 等热门网站。
+全平台支持 · 7×24 专业客服 · 采用军工级安全加密传输技术。</p>                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">热门文章</h3>
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-5-12-free-subscribe-node.htm" title="5月12日 - 最高速度19.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月12日 - 最高速度19.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-18-clash-nyanpasu.htm" title="4月18日 - 最高速度22.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月18日 - 最高速度22.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-3-free-high-speed-nodes.htm" title="5月3日 - 最高速度18.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月3日 - 最高速度18.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-16-free-high-speed-nodes.htm" title="5月16日 - 最高速度18.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月16日 - 最高速度18.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-14-node-share.htm" title="5月14日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月14日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-23-linux-clash-nyanpasu.htm" title="4月23日 - 最高速度20.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月23日 - 最高速度20.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-14-clash-nyanpasu.htm" title="4月14日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月14日 - 最高速度21.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-7-node-share.htm" title="5月7日 - 最高速度22.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月7日 - 最高速度22.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-21-free-clash-nyanpasu.htm" title="4月21日 - 最高速度22.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">4月21日 - 最高速度22.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-23-free-high-speed-nodes.htm" title="5月23日 - 最高速度19.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月23日 - 最高速度19.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-3-free-high-speed-nodes.htm" title="5月3日 - 最高速度18.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月3日 - 最高速度18.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-26-node-share.htm" title="5月26日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月26日 - 最高速度20.1M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-6-2-clash-nyanpasu.htm" title="6月2日 - 最高速度18.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">6月2日 - 最高速度18.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-22-free-clash-nyanpasu.htm" title="5月22日 - 最高速度22.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月22日 - 最高速度22.5M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-24-free-high-speed-nodes.htm" title="5月24日 - 最高速度22.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月24日 - 最高速度22.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-21-free-subscribe-node.htm" title="5月21日 - 最高速度19M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月21日 - 最高速度19M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-6-linux-clash-nyanpasu.htm" title="5月6日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月6日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-7-node-share.htm" title="5月7日 - 最高速度22.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月7日 - 最高速度22.6M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-14-node-share.htm" title="5月14日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月14日 - 最高速度19.4M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-10-clash-nyanpasu-node.htm" title="5月10日 - 最高速度21.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址">5月10日 - 最高速度21.8M/S，2025年Clash Nyanpasu每天更新免费节点订阅地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -426,10 +448,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2026-06/" title="2026-06 归档">2026-06</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
             </li>
                     </ul>
     </div>
@@ -458,6 +480,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
+                                        <div>特别推荐：<b><a href="javascript:;" class="js_to" data-url="https://www.futizi.net/?code=" data-type="Luniuyun" data-code="svvkQf3y" target="_blank">绿牛云</a></b> <p>高速稳定的网络加速</p>
+                        <p>畅享全球内容，访问 ChatGPT、TikTok、Google 等热门网站。
+全平台支持 · 7×24 专业客服 · 采用军工级安全加密传输技术。</p></div>
                                             <p>
                             Clash Nyanpasu官方节点站 版权所有
                             <br />
